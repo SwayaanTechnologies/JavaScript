@@ -2,10 +2,10 @@
 
 # Table of Content
 
-- [JavaScript Introduction]
-    - [What is JavaScript]
-    - [Features of JavaScript]
-    - [History of JavaScript]
+- [JavaScript Introduction](#javascript-introduction)
+    - [What is JavaScript](#what-is-javascript-?)
+    - [Features of JavaScript](#features-of-javascript)
+    - [History of JavaScript](#history-of-javascript)
 
 ## JavaScript Introduction
 
