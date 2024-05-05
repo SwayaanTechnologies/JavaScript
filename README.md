@@ -90,6 +90,13 @@
 
    - [Insert adjacent element and insert adjacent HTML](#insert-adjacent-element-and-insert-adjacent-html)
 
+- [JavaScript Validation](#javascript-validation)
+
+   - [JS form validation](#js-form-validation)
+
+   - [JS email validation](#js-email-validation)
+
+
 
 
 ## JavaScript Introduction
@@ -2201,3 +2208,151 @@ In this example:
 
 After running this code, you'll see that a new paragraph ("New Paragraph") is inserted as the first child of the container div, another new paragraph ("Next New Paragraph") is inserted as the next sibling of the first new paragraph, and HTML content ("Before Existing Paragraph") is inserted before the second existing paragraph in the HTML document using JavaScript.
 
+## JavaScript Validation
+
+### JS form validation
+
+JavaScript validation refers to the process of validating user input or data on the client-side using JavaScript before submitting it to the server. This helps ensure that the data meets certain criteria or constraints, such as required fields, correct format, and valid values, before further processing. Here's an example of how you can perform form validation using JavaScript:
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation Example</title>
+</head>
+<body>
+    <form id="myForm" onsubmit="return validateForm()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <span id="usernameError" style="color: red;"></span><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <span id="emailError" style="color: red;"></span><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <span id="passwordError" style="color: red;"></span><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+function validateForm() {
+    // Get form inputs and error spans
+    const usernameInput = document.getElementById('username');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const usernameError = document.getElementById('usernameError');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+
+    // Reset error messages
+    usernameError.textContent = '';
+    emailError.textContent = '';
+    passwordError.textContent = '';
+
+    // Validate username (required)
+    if (usernameInput.value.trim() === '') {
+        usernameError.textContent = 'Username is required';
+        return false; // Prevent form submission
+    }
+
+    // Validate email (required and correct format)
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(emailInput.value.trim())) {
+        emailError.textContent = 'Enter a valid email address';
+        return false; // Prevent form submission
+    }
+
+    // Validate password (required and minimum length)
+    if (passwordInput.value.trim().length < 6) {
+        passwordError.textContent = 'Password must be at least 6 characters long';
+        return false; // Prevent form submission
+    }
+
+    // Form is valid, allow submission
+    return true;
+}
+```
+
+In this example:
+
+- We have an HTML form with fields for username, email, and password, along with error spans to display validation messages.
+- The form has an `onsubmit` attribute set to call the `validateForm()` function when the form is submitted.
+- The JavaScript code defines the `validateForm()` function, which performs validation checks on the form inputs.
+- Inside `validateForm()`, we get references to form inputs and error spans, reset any existing error messages, and then perform validation checks.
+- Validation checks include ensuring that the username is not empty, the email is in a correct format using a regular expression (`emailPattern`), and the password has a minimum length of 6 characters.
+- If any validation fails, an error message is displayed, and the function returns `false` to prevent form submission.
+- If all validations pass, the function returns `true`, allowing the form to be submitted.
+
+This setup demonstrates basic form validation using JavaScript on the client-side. You can extend this example to include more complex validation rules based on your specific requirements.
+
+### JS email validation
+
+Sure, here's an example of how you can perform email validation using JavaScript:
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation Example</title>
+</head>
+<body>
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email">
+    <span id="emailError" style="color: red;"></span><br>
+
+    <button onclick="validateEmail()">Validate Email</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+function validateEmail() {
+    // Get the email input and error span
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('emailError');
+
+    // Reset error message
+    emailError.textContent = '';
+
+    // Validate email (required and correct format)
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(emailInput.value.trim())) {
+        emailError.textContent = 'Enter a valid email address';
+    } else {
+        emailError.textContent = 'Email is valid';
+    }
+}
+```
+
+In this example:
+
+- We have an HTML input field for entering an email address, along with an error span to display validation messages.
+- The JavaScript code defines a `validateEmail()` function that is called when the "Validate Email" button is clicked.
+- Inside `validateEmail()`, we get references to the email input field and the error span.
+- We reset any existing error message in the error span.
+- We use a regular expression (`emailPattern`) to validate the email format. The pattern `^[^\s@]+@[^\s@]+\.[^\s@]+$` checks for at least one character before the "@" symbol, followed by at least one character before and after the dot in the domain.
+- If the email format is valid according to the pattern, we display "Email is valid" in the error span. Otherwise, we display "Enter a valid email address".
+
+You can test this example by entering different email addresses and clicking the "Validate Email" button to see how the validation works.
