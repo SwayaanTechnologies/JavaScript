@@ -58,37 +58,37 @@
 
       - [Screen Object](#screen-object)
 
-- [JavaScript DOM]
+- [JavaScript DOM](#javascript-dom)
 
-   - [Document Object](#javascript-dom)
+   - [Document Object](#document-object)
 
    - [DOM Model](#dom-model)
 
    - [DOM other Object](#dom-other-object)
 
-   - [DOM Get Method](#)
+   - [DOM Get Method](#dom-get-method)
 
-   - [Dom styling]()
+   - [Dom styling](#dom-styling)
 
-   - [AddEventListener]() 
+   - [AddEventListener](#addeventlistener) 
 
-   - [UseCapture]()
+   - [UseCapture](#usecapture)
 
-   - [ClassList method]()
+   - [ClassList method](#classlist-method)
 
-   - [Parent nodes]()
+   - [Parent nodes](#parent-nodes)
 
-   - [Children nodes]()
+   - [Children nodes](#children-nodes)
 
-   - [First and last child]()
+   - [First and last child](#first-and-last-child)
 
-   - [Next and previous siblings]()
+   - [Next and previous siblings](#next-and-previous-siblings)
 
-   - [Create element text node]()
+   - [Create element text node](#create-element-text-node)
 
-   - [Append child and insert before]()
+   - [Append child and insert before](#append-child-and-insert-before)
 
-   - [Insert adjacent element and insert adjacent HTML]()
+   - [Insert adjacent element and insert adjacent HTML](#insert-adjacent-element-and-insert-adjacent-html)
 
 
 
