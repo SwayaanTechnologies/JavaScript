@@ -3833,4 +3833,4 @@ These are just a few examples of methods and properties related to numbers in Ja
 
 - [Reference](https://chat.openai.com/c/e656347c-8985-4b3c-b717-2033b18ab671)
 
--[Reference](https://chat.openai.com/c/e0c0fff2-c45f-4f0d-8646-093da16af632)
+- [Reference](https://chat.openai.com/c/e0c0fff2-c45f-4f0d-8646-093da16af632)
