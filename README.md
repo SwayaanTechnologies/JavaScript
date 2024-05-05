@@ -3,33 +3,92 @@
 # Table of Content
 
 - [JavaScript Introduction](#javascript-introduction)
-    - [What is JavaScript](#what-is-javascript-?)
-    - [Features of JavaScript](#features-of-javascript)
-    - [History of JavaScript](#history-of-javascript)
+
+   - [What is JavaScript](#what-is-javascript-?)
+
+   - [Features of JavaScript](#features-of-javascript)
+
+   - [History of JavaScript](#history-of-javascript)
+
 - [JavaScript Basics](#javascript-basics)
-    - [JavaScript Comment](#JavaScript-comment)
-    - [JavaScript Variable](#JavaScript-variable)
-    - [JavaScript Global Variabl](#JavaScript-global-variable)
-    - [JavaScript Data Types](#JavaScript-Data-Types)
-    - [JavaScript Operators](#JavaScript-Operators)
-    - [JavaScript If Statement](#JavaScript-If-Statement)
-    - [JavaScript Switch](#JavaScript-Switch)
-    - [JavaScript Loop](#JavaScript-loop)
-    - [JavaScript Function](#JavaScript-function)
+
+   - [JavaScript Comment](#JavaScript-comment)
+
+   - [JavaScript Variable](#JavaScript-variable)
+
+   - [JavaScript Global Variabl](#JavaScript-global-variable)
+
+   - [JavaScript Data Types](#JavaScript-Data-Types)
+
+   - [JavaScript Operators](#JavaScript-Operators)
+
+   - [JavaScript If Statement](#JavaScript-If-Statement)
+
+   - [JavaScript Switch](#JavaScript-Switch)
+
+   - [JavaScript Loop](#JavaScript-loop)
+
+   - [JavaScript Function](#JavaScript-function)
+
 - [JavaScript Objects](#javascript-object)
-    - [JavaScript Object](#javascript-object)
-    - [JavaScript Array](#javascript-array)
-    - [JavaScript String](#javascript-string)
-    - [JavaScript Date](#javascript-date)
-    - [JavaScript Math](#javascript-math)
-    - [JavaScript Number](#javascript-number)
-    - [JavaScript Boolean](#javascript-boolean)
+
+   - [JavaScript Object](#javascript-object)
+
+   - [JavaScript Array](#javascript-array)
+
+   - [JavaScript String](#javascript-string)
+
+   - [JavaScript Date](#javascript-date)
+
+   - [JavaScript Math](#javascript-math)
+
+   - [JavaScript Number](#javascript-number)
+
+   - [JavaScript Boolean](#javascript-boolean)
+
 - [JavaScript BOM](#javascript-bom)
-    - [Browser Objects](#browser-objects)
-         - [Window Object](#window-object)
-         - [History Object](#history-object)
-         - [Navigator Object](#navigator-object)
-         - [Screen Object](#screen-object)
+
+   - [Browser Objects](#browser-objects)
+
+      - [Window Object](#window-object)
+
+      - [History Object](#history-object)
+
+      - [Navigator Object](#navigator-object)
+
+      - [Screen Object](#screen-object)
+
+- [JavaScript DOM]
+
+   - [Document Object](#javascript-dom)
+
+   - [DOM Model](#dom-model)
+
+   - [DOM other Object](#dom-other-object)
+
+   - [DOM Get Method](#)
+
+   - [Dom styling]()
+
+   - [AddEventListener]() 
+
+   - [UseCapture]()
+
+   - [ClassList method]()
+
+   - [Parent nodes]()
+
+   - [Children nodes]()
+
+   - [First and last child]()
+
+   - [Next and previous siblings]()
+
+   - [Create element text node]()
+
+   - [Append child and insert before]()
+
+   - [Insert adjacent element and insert adjacent HTML]()
 
 
 
@@ -1120,3 +1179,1025 @@ The `screen` object in JavaScript provides information about the user's screen o
 ```
 
 The `screen` object is particularly useful for web applications that need to adapt their layout or behavior based on the user's screen size, orientation, or color capabilities. It provides valuable information for creating responsive and user-friendly interfaces.
+
+## JavaScript DOM
+
+The Document Object Model (DOM) in JavaScript is a programming interface that represents the structure of an HTML or XML document as a tree-like structure, where each node represents a part of the document, such as elements, attributes, and text. This model allows JavaScript to interact with and manipulate the content, structure, and style of a webpage.
+
+Here are some key concepts related to the JavaScript DOM:
+
+1. **Document Object**: The top-level object representing the entire HTML document. It provides methods and properties to access and manipulate the document's content.
+
+2. **Elements**: HTML elements are represented as nodes in the DOM tree. You can access elements using methods like `document.getElementById()`, `document.querySelector()`, or by navigating the DOM tree using properties like `parentNode`, `childNodes`, `firstChild`, and `lastChild`.
+
+3. **Attributes**: Elements may have attributes like `id`, `class`, `src`, `href`, etc. You can access and modify element attributes using methods like `getAttribute()`, `setAttribute()`, and properties like `element.id`, `element.className`, etc.
+
+4. **Events**: DOM events are actions or occurrences that happen in the DOM, such as a user clicking a button or the browser finishing loading a document. You can attach event listeners to elements using methods like `addEventListener()` to respond to these events.
+
+5. **Manipulating Content**: JavaScript can dynamically modify the content of a webpage by creating, removing, or modifying elements and their attributes. For example, you can create new elements using `document.createElement()`, add them to the DOM using methods like `appendChild()` or `insertBefore()`, and remove elements using `removeChild()`.
+
+6. **Styling**: You can also manipulate the style of elements using the `style` property or by adding/removing CSS classes with the `classList` property.
+
+DOM manipulation is a fundamental part of web development, allowing you to create interactive and dynamic web experiences. If you have specific questions or need more details on any aspect of the DOM, feel free to ask!
+
+### Document Object
+
+The Document Object in JavaScript represents the entire HTML document. It's the top-level object in the DOM hierarchy and provides access to various properties and methods for interacting with the document's structure and content. Here are some key points about the Document Object:
+
+1. **Accessing the Document Object**: You can access the Document Object using the global `document` variable in JavaScript. For example:
+
+   ```javascript
+   console.log(document); // Outputs the Document Object
+   ```
+
+2. **Properties of the Document Object**:
+- `document.documentElement`: Represents the root element of the document (usually `<html>`).
+- `document.body`: Represents the `<body>` element of the document.
+- `document.head`: Represents the `<head>` element of the document.
+- `document.title`: Gets or sets the title of the document.
+- `document.URL`: Gets the full URL of the document.
+- `document.domain`: Gets or sets the domain of the document.
+
+3. **Methods of the Document Object**:
+- `document.getElementById(id)`: Returns the element with the specified ID.
+- `document.querySelector(selector)`: Returns the first element that matches the specified CSS selector.
+- `document.createElement(tagName)`: Creates a new element with the specified tag name.
+- `document.createTextNode(text)`: Creates a new text node with the specified text.
+- `document.querySelectorAll(selector)`: Returns a NodeList of elements that match the specified CSS selector.
+- `document.createElementNS(namespaceURI, qualifiedName)`: Creates a new element with the specified namespace URI and qualified name.
+
+4. **Working with Document Content**:
+   - Adding elements to the document:
+
+   ```javascript
+   const newElement = document.createElement('div');
+   newElement.textContent = 'Hello, World!';
+   document.body.appendChild(newElement);
+   ```
+
+   - Modifying element attributes:
+
+   ```javascript
+   const myElement = document.getElementById('myElement');
+   myElement.setAttribute('class', 'newClass');
+   ```
+   - Manipulating styles:
+
+   ```javascript
+   const myElement = document.getElementById('myElement');
+   myElement.style.color = 'red';
+   ```
+
+5. **Events**:
+   - `DOMContentLoaded`: Fires when the initial HTML document has been completely loaded and parsed.
+   - `load`: Fires when the entire page (including images and other resources) has finished loading.
+   - `click`, `mouseover`, `submit`, etc.: Various events that can be attached to elements in the document.
+
+The Document Object provides a powerful API for working with HTML documents in JavaScript, allowing you to create, modify, and interact with the content dynamically.
+
+### DOM Model
+
+The Document Object Model (DOM) is a programming interface for web documents. It represents the structure of HTML and XML documents as a tree-like model, where each node in the tree corresponds to a part of the document, such as elements, attributes, and text.
+
+Here's a breakdown of the DOM model:
+
+1. **Node Types**:
+   - **Element Node**: Represents an HTML element, like `<div>`, `<p>`, `<a>`, etc.
+   - **Text Node**: Represents the text within an element, such as "Hello, World!" inside a `<p>` tag.
+   - **Attribute Node**: Represents an attribute of an element, like `id="myElement"`.
+   - **Comment Node**: Represents a comment within the HTML code, <!-- This is a comment -->.
+   - **Document Node**: Represents the entire HTML document.
+   - **Document Type Node**: Represents the document type declaration, like `<!DOCTYPE html>`.
+
+2. **Hierarchy**:
+   - The DOM tree starts with the Document Node at the top.
+   - The Document Node has child nodes representing the `<html>` element, which in turn has child nodes like `<head>` and `<body>`.
+   - Elements can have child nodes, which can be other elements, text nodes, or even comment nodes.
+   - Nodes can have sibling nodes, which are nodes that share the same parent node.
+
+3. **Accessing Nodes**:
+   - **Traversal**: You can navigate the DOM tree using properties like `parentNode`, `childNodes`, `firstChild`, `lastChild`, `nextSibling`, and `previousSibling`.
+   - **Selectors**: Methods like `getElementById()`, `querySelector()`, `getElementsByClassName()`, and `getElementsByTagName()` allow you to select specific elements based on IDs, classes, tags, or CSS selectors.
+   - **Creating Nodes**: You can create new elements and nodes using `document.createElement()`, `document.createTextNode()`, and other methods.
+
+4. **Manipulating Nodes**:
+   - **Adding Nodes**: Use methods like `appendChild()`, `insertBefore()`, and `insertAdjacentHTML()` to add new nodes to the DOM.
+   - **Modifying Nodes**: Change element attributes using `setAttribute()`, update text content with `textContent` or `innerHTML`, and modify styles with the `style` property.
+   - **Removing Nodes**: Remove nodes using methods like `removeChild()` or `parentNode.removeChild()`.
+
+5. **Events**:
+   - DOM events allow JavaScript to respond to user actions and document changes.
+   - Common events include `click`, `mouseover`, `keydown`, `submit`, `load`, `DOMContentLoaded`, etc.
+   - You can attach event listeners using methods like `addEventListener()`.
+
+Understanding the DOM model is crucial for web development as it enables dynamic interaction with HTML documents, making it possible to create interactive and responsive web applications.
+
+Here's a simple example demonstrating the DOM model in action. This example creates a new paragraph element, sets its text content, and appends it to the body of the HTML document:
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Model Example</title>
+</head>
+<body>
+    <h1>DOM Model Example</h1>
+    <div id="content">
+        <!-- New paragraph will be added here -->
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+// Create a new paragraph element
+const paragraph = document.createElement('p');
+
+// Set the text content of the paragraph
+paragraph.textContent = 'This is a new paragraph created using the DOM model.';
+
+// Get the content div where we want to append the paragraph
+const contentDiv = document.getElementById('content');
+
+// Append the paragraph to the content div
+contentDiv.appendChild(paragraph);
+```
+
+In this example:
+
+1. We start with an HTML document that includes a `<div>` element with the ID "content," where we'll add the new paragraph.
+2. The JavaScript code creates a new `<p>` element using `document.createElement('p')`.
+3. We set the text content of the paragraph using `paragraph.textContent`.
+4. The `getElementById()` method is used to get the content `<div>` where we want to append the paragraph.
+5. Finally, we append the paragraph to the content `<div>` using `contentDiv.appendChild(paragraph)`.
+
+When you open this HTML file in a browser and inspect the DOM using the browser's developer tools, you'll see the newly created paragraph element added inside the "content" `<div>`.
+
+### DOM other Object
+
+Apart from the Document Object, there are several other important objects and concepts in the DOM that are commonly used in JavaScript:
+
+1. **Element Object**:
+   - Represents an HTML element in the DOM tree.
+   - Provides properties and methods to manipulate the attributes, styles, and content of the element.
+
+2. **Node Object**:
+   - Represents a node in the DOM tree.
+   - Both Element and non-Element nodes (such as Text nodes, Comment nodes, etc.) are instances of the Node object.
+   - Provides common properties and methods for all types of nodes, such as `parentNode`, `childNodes`, `firstChild`, `lastChild`, `nextSibling`, `previousSibling`, etc.
+
+3. **Event Object**:
+   - Represents an event that occurs in the DOM, such as a mouse click, keypress, form submission, etc.
+   - Contains information about the event, such as the target element, event type, mouse coordinates, key codes, etc.
+   - Passed as an argument to event handler functions when an event is triggered.
+
+4. **Window Object**:
+   - Represents the browser window that contains the DOM document.
+   - Provides properties and methods for interacting with the browser window, such as `window.location`, `window.history`, `window.alert()`, `window.setTimeout()`, etc.
+   - Acts as the global object in client-side JavaScript.
+
+5. **DocumentFragment Object**:
+   - Represents a lightweight Document object that can hold a collection of nodes.
+   - Useful for creating and manipulating a group of nodes before appending them to the main document, improving performance in DOM manipulation.
+
+6. **HTMLCollection and NodeList Objects**:
+   - Both represent collections of nodes (usually elements) in the DOM.
+   - HTMLCollection is live, meaning it automatically updates as the DOM changes, such as when elements are added or removed.
+   - NodeList is static and represents a snapshot of the DOM at the time it was queried.
+
+7. **Location Object**:
+   - Represents the current URL of the document and provides properties like `href`, `hostname`, `pathname`, `search`, etc.
+   - Accessible via `window.location` or `document.location`.
+
+These objects and concepts work together to provide a powerful and flexible environment for manipulating and interacting with web documents using JavaScript.
+
+Certainly! Let's explore some other important objects and methods in the DOM along with examples.
+
+1. **Document Object**:
+   - Represents the entire HTML document.
+   - Provides methods to access and manipulate the document's content.
+
+Example:
+
+```javascript
+// Access the document title
+const title = document.title;
+console.log('Document Title:', title);
+
+// Change the document title
+document.title = 'New Title';
+console.log('New Document Title:', document.title);
+```
+
+2. **Element Object**:
+   - Represents an HTML element.
+   - Provides methods and properties to interact with elements.
+
+Example:
+
+```javascript
+// Get an element by ID
+const myElement = document.getElementById('myElement');
+console.log('Element by ID:', myElement);
+
+// Add a CSS class to the element
+myElement.classList.add('highlight');
+```
+
+3. **NodeList Object**:
+   - Represents a collection of nodes (e.g., returned by methods like `querySelectorAll()`).
+   - Allows iteration over nodes using methods like `forEach()`.
+
+Example:
+
+```javascript
+// Get all paragraphs in the document
+const paragraphs = document.querySelectorAll('p');
+
+// Iterate over paragraphs and log their text content
+paragraphs.forEach(paragraph => {
+    console.log(paragraph.textContent);
+});
+```
+
+4. **Event Object**:
+   - Represents an event that occurs in the DOM.
+   - Contains information about the event (e.g., target element, event type).
+
+Example:
+
+```javascript
+// Add a click event listener to a button
+const button = document.getElementById('myButton');
+button.addEventListener('click', function(event) {
+    console.log('Button clicked!');
+    console.log('Target Element:', event.target);
+});
+```
+
+5. **Window Object**:
+   - Represents the browser window or tab.
+   - Provides methods and properties for interacting with the window.
+
+Example:
+
+```javascript
+// Open a new window
+const newWindow = window.open('https://www.example.com', '_blank');
+console.log('New Window:', newWindow);
+
+// Close the current window
+window.close();
+```
+
+These examples demonstrate how to work with different objects in the DOM, such as accessing elements, handling events, and interacting with the browser window. Each object plays a crucial role in web development for building dynamic and interactive web applications.
+
+### DOM Get Method
+
+In the DOM, the `getElementById` method is used to retrieve an element from the document based on its unique ID. This method is part of the `document` object and is commonly used in JavaScript to access specific elements for manipulation or interaction. Here's an example of how to use the `getElementById` method:
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Get Method Example</title>
+</head>
+<body>
+    <h1 id="mainHeading">Welcome to my Website</h1>
+    <div id="content">
+        <p>This is a paragraph.</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+// Get the element with ID "mainHeading"
+const heading = document.getElementById('mainHeading');
+
+// Change the text content and style of the heading
+heading.textContent = 'Hello World!';
+heading.style.color = 'blue';
+```
+
+In this example:
+
+- We have an HTML document with an `<h1>` element that has the ID "mainHeading" and a `<div>` element with the ID "content."
+- In the JavaScript code, we use `document.getElementById('mainHeading')` to get the element with the ID "mainHeading" from the document.
+- We then modify the text content of the heading using `heading.textContent` and change its color using `heading.style.color`.
+
+After running this code, the text of the `<h1>` element with the ID "mainHeading" will be changed to "Hello World!" and its color will be set to blue.
+
+### DOM styling
+
+Styling elements in the DOM is done using the `style` property of an element. This property allows you to directly modify the CSS styles of an element using JavaScript. Here's an example of how to style elements in the DOM:
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Styling Example</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to my Website</h1>
+    <p id="paragraph">This is a paragraph.</p>
+    <button onclick="highlightText()">Highlight Paragraph</button>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+function highlightText() {
+    // Get the paragraph element
+    const paragraph = document.getElementById('paragraph');
+
+    // Add the 'highlight' class to apply styles
+    paragraph.classList.add('highlight');
+}
+```
+
+In this example:
+
+- We have an HTML document with a `<p>` element that has the ID "paragraph" and a CSS style for the "highlight" class.
+- The JavaScript code defines a function `highlightText()` that is triggered when a button is clicked.
+- Inside the function, we use `document.getElementById('paragraph')` to get the paragraph element with the ID "paragraph."
+- We then use `paragraph.classList.add('highlight')` to add the "highlight" class to the paragraph element, which applies the specified styles from the CSS.
+
+When you click the "Highlight Paragraph" button, the background color of the paragraph will change to yellow, the text color will change to red, and the font weight will become bold, as defined in the CSS for the "highlight" class. This demonstrates how to dynamically apply styles to elements in the DOM using JavaScript.
+
+### AddEventListener 
+
+The `addEventListener` method in JavaScript is used to attach an event handler to an element. It allows you to listen for a specific event on the element, such as a click, mouseover, keypress, etc., and execute a function (event handler) when that event occurs. Here's an example of how to use `addEventListener`:
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addEventListener Example</title>
+</head>
+<body>
+    <button id="myButton">Click Me</button>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+// Get the button element
+const button = document.getElementById('myButton');
+
+// Add a click event listener to the button
+button.addEventListener('click', function() {
+    alert('Button clicked!');
+});
+```
+
+In this example:
+
+- We have an HTML document with a `<button>` element that has the ID "myButton."
+- The JavaScript code uses `document.getElementById('myButton')` to get the button element.
+- We then use `addEventListener` to attach a click event listener to the button.
+- When the button is clicked, the function inside `addEventListener` (`function() { alert('Button clicked!'); }`) is executed, showing an alert message.
+
+You can attach event listeners for various events like click, mouseover, keypress, etc., and perform different actions based on those events. The `addEventListener` method is commonly used in web development to handle user interactions and create dynamic behavior on web pages.
+
+### UseCapture
+
+The `addEventListener` method in JavaScript allows you to specify whether the event should be captured during the event propagation phase. Event propagation refers to the process of how events are handled and propagated through the DOM hierarchy, from the target element to its ancestors (capturing phase) and then back down to the target element (bubbling phase). By default, event handlers are added in the bubbling phase, but you can also choose to add them in the capturing phase using the `useCapture` parameter.
+
+Here's an example demonstrating the use of the `useCapture` parameter in `addEventListener`:
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>useCapture Example</title>
+</head>
+<body>
+    <div id="outer">
+        <div id="inner">Inner Div</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+// Get the outer and inner div elements
+const outerDiv = document.getElementById('outer');
+const innerDiv = document.getElementById('inner');
+
+// Add event listeners with and without capturing
+outerDiv.addEventListener('click', function() {
+    console.log('Outer Div Clicked (Bubbling)');
+}, false); // Default is false, indicating bubbling phase
+
+innerDiv.addEventListener('click', function() {
+    console.log('Inner Div Clicked (Bubbling)');
+}, false);
+
+outerDiv.addEventListener('click', function() {
+    console.log('Outer Div Clicked (Capturing)');
+}, true); // true indicates capturing phase
+
+innerDiv.addEventListener('click', function() {
+    console.log('Inner Div Clicked (Capturing)');
+}, true);
+```
+
+In this example:
+
+- We have an HTML document with two nested `<div>` elements: an outer div with the ID "outer" and an inner div with the ID "inner."
+- The JavaScript code attaches click event listeners to both the outer and inner divs, one for the bubbling phase and one for the capturing phase.
+- When you click on the inner div, the event is first captured at the outer div during the capturing phase (`console.log('Outer Div Clicked (Capturing)')`), then bubbles up to the inner div during the bubbling phase (`console.log('Inner Div Clicked (Bubbling)')`).
+
+By setting the `useCapture` parameter to `true`, you specify that the event should be handled during the capturing phase. This can be useful for certain scenarios where you want to capture events at higher levels of the DOM hierarchy before they reach the target element.
+
+### ClassList method
+
+The `classList` property in JavaScript provides methods to add, remove, toggle, and check for the presence of CSS classes on an element. This property is available on DOM elements and is very useful for dynamically manipulating classes and styles. Here are the main methods available in `classList`:
+
+1. **`add(className)`**: Adds a CSS class to the element.
+2. **`remove(className)`**: Removes a CSS class from the element.
+3. **`toggle(className)`**: Toggles the presence of a CSS class. If the class is present, it removes it; if not, it adds it.
+4. **`contains(className)`**: Checks if the element has a specific CSS class.
+
+Here's an example demonstrating the usage of `classList` methods:
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classList Example</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <button id="toggleButton">Toggle Highlight</button>
+    <p id="myParagraph">This is a paragraph.</p>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+// Get the button and paragraph elements
+const toggleButton = document.getElementById('toggleButton');
+const myParagraph = document.getElementById('myParagraph');
+
+// Add click event listener to the button
+toggleButton.addEventListener('click', function() {
+    // Toggle the 'highlight' class on the paragraph
+    myParagraph.classList.toggle('highlight');
+});
+```
+
+In this example:
+
+- We have an HTML document with a `<button>` element and a `<p>` element.
+- The CSS class "highlight" is defined with specific styles.
+- The JavaScript code adds a click event listener to the button.
+- When the button is clicked, it toggles the "highlight" class on the paragraph element using `myParagraph.classList.toggle('highlight')`.
+
+When you click the button, the paragraph's background color changes to yellow, text color to red, and font weight to bold if the "highlight" class is toggled on. If you click again, the class is removed, and the styles revert to their original state.
+
+The `classList` property in JavaScript provides a convenient way to add, remove, toggle, and check for the presence of CSS classes on an element. Here's an example demonstrating the use of `classList` methods `add`, `remove`, `toggle`, and `contains`:
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classList Methods Example</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="myDiv">This is a div element</div>
+    <button onclick="addClass()">Add Class</button>
+    <button onclick="removeClass()">Remove Class</button>
+    <button onclick="toggleClass()">Toggle Class</button>
+    <button onclick="checkClass()">Check Class</button>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+// Get the div element
+const myDiv = document.getElementById('myDiv');
+
+// Function to add a class to the div
+function addClass() {
+    myDiv.classList.add('highlight');
+}
+
+// Function to remove a class from the div
+function removeClass() {
+    myDiv.classList.remove('highlight');
+}
+
+// Function to toggle a class on the div
+function toggleClass() {
+    myDiv.classList.toggle('highlight');
+}
+
+// Function to check if a class is present on the div
+function checkClass() {
+    const hasClass = myDiv.classList.contains('highlight');
+    console.log('Has Highlight Class:', hasClass);
+}
+```
+
+In this example:
+
+- We have an HTML document with a `<div>` element with the ID "myDiv" and several buttons to interact with the div using `classList` methods.
+- The JavaScript code defines four functions: `addClass`, `removeClass`, `toggleClass`, and `checkClass`, each corresponding to adding, removing, toggling, and checking the presence of the "highlight" class on the div.
+- The `classList.add('highlight')` method adds the "highlight" class to the div, applying the specified styles from the CSS.
+- The `classList.remove('highlight')` method removes the "highlight" class from the div.
+- The `classList.toggle('highlight')` method toggles the presence of the "highlight" class on the div. If the class is present, it removes it; if not, it adds it.
+- The `classList.contains('highlight')` method checks if the "highlight" class is present on the div and returns a boolean value (`true` if present, `false` if not).
+
+When you click the buttons in the HTML, you'll see the changes in the div's appearance based on the `classList` methods used.
+
+### Parent nodes
+
+In the DOM, the concept of parent nodes refers to nodes that are higher in the tree hierarchy compared to a given node. Every node in the DOM (except the root node) has one parent node, except in cases where the node is detached or removed from the DOM.
+
+Here's an example to demonstrate how to access and work with parent nodes in the DOM using JavaScript:
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Nodes Example</title>
+</head>
+<body>
+    <div id="outerDiv">
+        <div id="innerDiv">
+            <p id="paragraph">This is a paragraph.</p>
+        </div>
+    </div>
+    <button onclick="showParent()">Show Parent</button>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+function showParent() {
+    // Get the paragraph element
+    const paragraph = document.getElementById('paragraph');
+
+    // Get the parent node of the paragraph
+    const parentDiv = paragraph.parentNode;
+
+    // Display the parent node's ID in the console
+    console.log('Parent Node ID:', parentDiv.id);
+}
+```
+
+In this example:
+
+- We have an HTML document with a nested structure of `<div>` and `<p>` elements.
+- The JavaScript code defines a function `showParent()` that is triggered when a button is clicked.
+- Inside the function, we use `document.getElementById('paragraph')` to get the paragraph element with the ID "paragraph."
+- We then use `paragraph.parentNode` to access the parent node of the paragraph, which is the `<div>` element with the ID "innerDiv."
+- Finally, we log the ID of the parent node to the console (`parentDiv.id`).
+
+When you click the "Show Parent" button in the HTML, it will trigger the `showParent()` function, and you'll see the ID of the parent node logged in the console. This demonstrates how to access and work with parent nodes in the DOM using JavaScript.
+
+### Children nodes
+
+In the DOM, children nodes are nodes that are directly nested within a parent node. These nodes are located at a lower level in the DOM hierarchy compared to their parent node. Every node in the DOM can have zero or more children nodes, depending on the structure of the document.
+
+Here's an example to demonstrate how to access and work with children nodes in the DOM using JavaScript:
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Children Nodes Example</title>
+</head>
+<body>
+    <div id="parentDiv">
+        <p>This is a paragraph.</p>
+        <span>This is a span element.</span>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+    <button onclick="showChildren()">Show Children</button>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+function showChildren() {
+    // Get the parent div element
+    const parentDiv = document.getElementById('parentDiv');
+
+    // Get the children nodes of the parent div
+    const children = parentDiv.childNodes;
+
+    // Display the number of children nodes and their types in the console
+    console.log('Number of Children:', children.length);
+    children.forEach(node => {
+        console.log('Child Node Type:', node.nodeType);
+    });
+}
+```
+
+In this example:
+
+- We have an HTML document with a `<div>` element that serves as the parent node, containing various child nodes such as `<p>`, `<span>`, and `<ul>` with `<li>` elements.
+- The JavaScript code defines a function `showChildren()` that is triggered when a button is clicked.
+- Inside the function, we use `document.getElementById('parentDiv')` to get the parent div element with the ID "parentDiv."
+- We then use `parentDiv.childNodes` to access the children nodes of the parent div.
+- We log the number of children nodes (`children.length`) and iterate over each child node using `children.forEach()` to log their node types (`node.nodeType`) in the console.
+
+When you click the "Show Children" button in the HTML, it will trigger the `showChildren()` function, and you'll see the number of children nodes and their node types logged in the console. This demonstrates how to access and work with children nodes in the DOM using JavaScript.
+
+### First and last child
+
+In the DOM, you can access the first and last child nodes of a parent node using the `firstChild` and `lastChild` properties, respectively. These properties return the first and last child nodes of the specified parent node, including text nodes, element nodes, and comment nodes. Here's an example:
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First and Last Child Example</title>
+</head>
+<body>
+    <div id="parentDiv">
+        <p>This is the first paragraph.</p>
+        <span>This is a span element.</span>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <p>This is the last paragraph.</p>
+    </div>
+    <button onclick="showFirstChild()">Show First Child</button>
+    <button onclick="showLastChild()">Show Last Child</button>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+function showFirstChild() {
+    // Get the parent div element
+    const parentDiv = document.getElementById('parentDiv');
+
+    // Get the first child node of the parent div
+    const firstChild = parentDiv.firstChild;
+
+    // Display the first child node in the console
+    console.log('First Child Node:', firstChild);
+}
+
+function showLastChild() {
+    // Get the parent div element
+    const parentDiv = document.getElementById('parentDiv');
+
+    // Get the last child node of the parent div
+    const lastChild = parentDiv.lastChild;
+
+    // Display the last child node in the console
+    console.log('Last Child Node:', lastChild);
+}
+```
+
+In this example:
+
+- We have an HTML document with a `<div>` element that serves as the parent node, containing various child nodes such as `<p>`, `<span>`, and `<ul>` with `<li>` elements.
+- The JavaScript code defines two functions: `showFirstChild()` and `showLastChild()`, which are triggered when buttons are clicked.
+- Inside each function, we use `document.getElementById('parentDiv')` to get the parent div element with the ID "parentDiv."
+- We then use `parentDiv.firstChild` in `showFirstChild()` to access the first child node and `parentDiv.lastChild` in `showLastChild()` to access the last child node of the parent div.
+- We log the first and last child nodes to the console in each function.
+
+When you click the "Show First Child" and "Show Last Child" buttons in the HTML, it will trigger the respective functions, and you'll see the first and last child nodes logged in the console.
+
+### Next and previous siblings
+
+To access the next and previous siblings of an element in the DOM, you can use the `nextSibling` and `previousSibling` properties, respectively. These properties allow you to navigate to the adjacent sibling nodes in the DOM tree, which are nodes that share the same parent node and are located immediately before or after the given element. Here's an example:
+
+HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next and Previous Siblings Example</title>
+</head>
+<body>
+    <div id="parentDiv">
+        <p>This is the first paragraph.</p>
+        <span>This is a span element.</span>
+        <ul>
+            <li>Item 1</li>
+            <li id="targetElement">Target Element</li>
+            <li>Item 3</li>
+        </ul>
+        <p>This is the last paragraph.</p>
+    </div>
+    <button onclick="showNextSibling()">Show Next Sibling</button>
+    <button onclick="showPreviousSibling()">Show Previous Sibling</button>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+function showNextSibling() {
+    // Get the target element
+    const targetElement = document.getElementById('targetElement');
+
+    // Get the next sibling of the target element
+    const nextSibling = targetElement.nextSibling;
+
+    // Display the next sibling in the console
+    console.log('Next Sibling:', nextSibling);
+}
+
+function showPreviousSibling() {
+    // Get the target element
+    const targetElement = document.getElementById('targetElement');
+
+    // Get the previous sibling of the target element
+    const previousSibling = targetElement.previousSibling;
+
+    // Display the previous sibling in the console
+    console.log('Previous Sibling:', previousSibling);
+}
+```
+
+In this example:
+
+- We have an HTML document with a `<div>` element that serves as the parent node, containing various child nodes such as `<p>`, `<span>`, and `<ul>` with `<li>` elements.
+- One of the `<li>` elements has the ID "targetElement," which is the element we want to focus on for finding its next and previous siblings.
+- The JavaScript code defines two functions: `showNextSibling()` and `showPreviousSibling()`, which are triggered when buttons are clicked.
+- Inside each function, we use `document.getElementById('targetElement')` to get the target element.
+- We then use `targetElement.nextSibling` in `showNextSibling()` to access the next sibling node and `targetElement.previousSibling` in `showPreviousSibling()` to access the previous sibling node of the target element.
+- We log the next and previous sibling nodes to the console in each function.
+
+When you click the "Show Next Sibling" and "Show Previous Sibling" buttons in the HTML, it will trigger the respective functions, and you'll see the next and previous sibling nodes logged in the console.
+
+### Create element text node
+
+To create an element and a text node in the DOM using JavaScript, you can use the `document.createElement()` method to create the element and `document.createTextNode()` method to create the text node. After creating these nodes, you can append the text node to the element and then append the element to the document or another parent element. Here's an example:
+
+HTML 
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Element and Text Node Example</title>
+</head>
+<body>
+    <div id="container">
+        <!-- New elements will be added here -->
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+// Create a new paragraph element
+const newParagraph = document.createElement('p');
+
+// Create a new text node
+const textNode = document.createTextNode('This is a new paragraph created using JavaScript.');
+
+// Append the text node to the paragraph element
+newParagraph.appendChild(textNode);
+
+// Get the container div where we want to append the new paragraph
+const containerDiv = document.getElementById('container');
+
+// Append the new paragraph to the container div
+containerDiv.appendChild(newParagraph);
+```
+
+In this example:
+
+- We start with an HTML document that contains a `<div>` element with the ID "container," where we'll add the new paragraph.
+- The JavaScript code creates a new `<p>` element using `document.createElement('p')`.
+- We then create a new text node with the content "This is a new paragraph created using JavaScript." using `document.createTextNode('...')`.
+- Next, we append the text node to the paragraph element using `newParagraph.appendChild(textNode)`.
+- We get the container `<div>` element using `document.getElementById('container')`.
+- Finally, we append the new paragraph to the container div using `containerDiv.appendChild(newParagraph)`.
+
+After running this code, a new paragraph with the specified text content will be dynamically added to the container `<div>` in the HTML document using JavaScript.
+
+### Append child and insert before
+
+Sure, here's an example of using both `appendChild` and `insertBefore` methods in the DOM:
+
+HTML 
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Append Child and Insert Before Example</title>
+</head>
+<body>
+    <div id="container">
+        <!-- New elements will be added here -->
+        <p>Existing Paragraph 1</p>
+        <p>Existing Paragraph 2</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+// Create a new paragraph element
+const newParagraph = document.createElement('p');
+newParagraph.textContent = 'New Paragraph';
+
+// Get the container div where we want to append elements
+const containerDiv = document.getElementById('container');
+
+// Append the new paragraph as the last child of the container div
+containerDiv.appendChild(newParagraph);
+
+// Create another paragraph element
+const anotherParagraph = document.createElement('p');
+anotherParagraph.textContent = 'Another New Paragraph';
+
+// Get the reference node (existing paragraph) before which to insert the new paragraph
+const referenceNode = document.querySelector('#container p:nth-child(2)');
+
+// Insert the new paragraph before the reference node
+containerDiv.insertBefore(anotherParagraph, referenceNode);
+```
+
+In this example:
+
+- We start with an HTML document that contains a `<div>` element with the ID "container," where we have existing paragraphs.
+- The JavaScript code creates a new `<p>` element with the text "New Paragraph" using `document.createElement('p')` and `textContent`.
+- We get the container `<div>` element using `document.getElementById('container')`.
+- We then append the new paragraph as the last child of the container div using `containerDiv.appendChild(newParagraph)`.
+- Next, we create another paragraph element with the text "Another New Paragraph."
+- We use `document.querySelector('#container p:nth-child(2)')` to select the second existing paragraph as the reference node.
+- Finally, we use `containerDiv.insertBefore(anotherParagraph, referenceNode)` to insert the new paragraph before the reference node (second existing paragraph) in the container div.
+
+After running this code, you'll see that a new paragraph ("New Paragraph") is appended as the last child of the container div, and another new paragraph ("Another New Paragraph") is inserted before the second existing paragraph in the HTML document using JavaScript.
+
+### Insert adjacent element and insert adjacent HTML
+
+Certainly! The `insertAdjacentElement` and `insertAdjacentHTML` methods in the DOM allow you to insert elements or HTML code adjacent to a specified element. These methods provide more flexibility compared to `appendChild` and `insertBefore` as they let you specify the position of insertion relative to the target element. Here's an example of using both methods:
+
+HTML 
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Adjacent Element and HTML Example</title>
+</head>
+<body>
+    <div id="container">
+        <p>Existing Paragraph 1</p>
+        <p>Existing Paragraph 2</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+JavaScript (script.js):
+
+```javascript
+// Create a new paragraph element
+const newParagraph = document.createElement('p');
+newParagraph.textContent = 'New Paragraph';
+
+// Get the container div where we want to insert elements
+const containerDiv = document.getElementById('container');
+
+// Insert the new paragraph as the first child of the container div
+containerDiv.insertAdjacentElement('afterbegin', newParagraph);
+
+// Insert another paragraph element as the next sibling of the new paragraph
+newParagraph.insertAdjacentHTML('afterend', '<p>Next New Paragraph</p>');
+
+// Insert HTML content before the second existing paragraph
+const existingParagraph = document.querySelector('#container p:nth-child(2)');
+existingParagraph.insertAdjacentHTML('beforebegin', '<p>Before Existing Paragraph</p>');
+```
+
+In this example:
+
+- We start with an HTML document that contains a `<div>` element with the ID "container," where we have existing paragraphs.
+- The JavaScript code creates a new `<p>` element with the text "New Paragraph" using `document.createElement('p')` and `textContent`.
+- We get the container `<div>` element using `document.getElementById('container')`.
+- We then use `containerDiv.insertAdjacentElement('afterbegin', newParagraph)` to insert the new paragraph as the first child of the container div.
+- Next, we use `newParagraph.insertAdjacentHTML('afterend', '<p>Next New Paragraph</p>')` to insert another paragraph element as the next sibling of the new paragraph.
+- Finally, we use `existingParagraph.insertAdjacentHTML('beforebegin', '<p>Before Existing Paragraph</p>')` to insert HTML content before the second existing paragraph in the container div.
+
+After running this code, you'll see that a new paragraph ("New Paragraph") is inserted as the first child of the container div, another new paragraph ("Next New Paragraph") is inserted as the next sibling of the first new paragraph, and HTML content ("Before Existing Paragraph") is inserted before the second existing paragraph in the HTML document using JavaScript.
+
