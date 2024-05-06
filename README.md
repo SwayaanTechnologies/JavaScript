@@ -368,52 +368,413 @@ JavaScript operators are symbols used to perform operations on operands (variabl
 
 1. **Arithmetic Operators**:
 - Addition: `+`
+
+```javascript
+let num1 = 5;
+let num2 = 10;
+
+let sum = num1 + num2;
+
+console.log("The sum of", num1, "and", num2, "is", sum);
+```
+
 - Subtraction: `-`
+
+```javascript
+let num1 = 10;
+let num2 = 5;
+
+let difference = num1 - num2;
+
+console.log("The difference between", num1, "and", num2, "is", difference);
+```
+
+
+
 - Multiplication: `*`
+
+```javascript
+let num1 = 10;
+let num2 = 5;
+
+let difference = num1 * num2;
+
+console.log("The difference between", num1, "and", num2, "is", difference);
+```
+
 - Division: `/`
+
+```javascript
+let num1 = 10;
+let num2 = 5;
+
+let difference = num1 / num2;
+
+console.log("The difference between", num1, "and", num2, "is", difference);
+```
+
 - Modulus (Remainder): `%`
+
+```javascript
+let num1 = 10;
+let num2 = 5;
+
+let difference = num1 % num2;
+
+console.log("The difference between", num1, "and", num2, "is", difference);
+```
+
 - Increment: `++`
+
+```javascript
+let num = 5;
+
+// Incrementing the value of num by 1
+num++;
+
+console.log("After incrementing, num is", num);
+```
+
 - Decrement: `--`
+
+```javascript
+let num = 5;
+
+// Incrementing the value of num by 1
+num--;
+
+console.log("After incrementing, num is", num);
+```
+
 
 2. **Assignment Operators**:
 - Assignment: `=`
+
+```javascript
+let num1 = 5;
+let num2;
+
+num2 = num1;
+
+console.log("num1:", num1);
+console.log("num2:", num2);
+```
+
 - Addition assignment: `+=`
+
+```javascript
+let num1 = 5;
+let num2 = 10;
+
+num1 += num2;
+
+console.log("After addition assignment, num1 is", num1);
+```
+
 - Subtraction assignment: `-=`
+
+```javascript
+let num1 = 5;
+let num2 = 10;
+
+num1 -= num2;
+
+console.log("After addition assignment, num1 is", num1);
+```
+
+
 - Multiplication assignment: `*=`
+
+```javascript
+let num1 = 5;
+let num2 = 10;
+
+num1 *= num2;
+
+console.log("After addition assignment, num1 is", num1);
+```
+
 - Division assignment: `/=`
+
+```javascript
+let num1 = 5;
+let num2 = 10;
+
+num1 /= num2;
+
+console.log("After addition assignment, num1 is", num1);
+```
+
 - Modulus assignment: `%=`
+
+```javascript
+let num1 = 5;
+let num2 = 10;
+
+num1 %= num2;
+
+console.log("After addition assignment, num1 is", num1);
+```
 
 3. **Comparison Operators**:
 - Equal to: `==` or `===` (strict equality)
+
+```javascript
+let num1 = 5;
+let num2 = 10;
+
+if (num1 == num2) {
+    console.log("num1 is equal to num2");
+} else {
+    console.log("num1 is not equal to num2");
+}
+```
+
 - Not equal to: `!=` or `!==` (strict inequality)
+
+```javascript
+let num1 = 5;
+let num2 = 10;
+
+if (num1 !== num2) {
+    console.log("num1 is equal to num2");
+} else {
+    console.log("num1 is not equal to num2");
+}
+```
+
 - Greater than: `>`
+
+```javascript
+let num1 = 10;
+let num2 = 5;
+
+if (num1 > num2) {
+    console.log("num1 is greater than num2");
+} else {
+    console.log("num1 is not greater to num2");
+}
+```
 - Less than: `<`
+
+```javascript
+let num1 = 10;
+let num2 = 5;
+
+if (num1 <> num2) {
+    console.log("num1 is greater than num2");
+} else {
+    console.log("num1 is not greater to num2");
+}
+```
+
 - Greater than or equal to: `>=`
+
+```javascript
+let num1 = 5;
+let num2 = 5;
+
+if (num1 >= num2) {
+    console.log("num1 is greater than or equal to num2");
+} else {
+    console.log("num1 is less than num2");
+}
+```
 - Less than or equal to: `<=`
+
+```javascript
+let num1 = 5;
+let num2 = 10;
+
+if (num1 <>= num2) {
+    console.log("num1 is greater than or equal to num2");
+} else {
+    console.log("num1 is less than num2");
+}
+```
 
 4. **Logical Operators**:
 - Logical AND: `&&`
+
+```javascript
+let num1 = 5;
+let num2 = 10;
+
+if (num1 > 0 && num2 > 0) {
+    console.log("Both num1 and num2 are greater than 0");
+} else {
+    console.log("At least one of num1 or num2 is not greater than 0");
+}
+```
 - Logical OR: `||`
+
+```javascript
+let num1 = 5;
+let num2 = 10;
+
+if (num1 > 0 || num2 > 0) {
+    console.log("At least one of num1 or num2 is greater than 0");
+} else {
+    console.log("Neither num1 nor num2 is greater than 0");
+}
+```
+
 - Logical NOT: `!`
+
+```javascript
+let isLoggedIn = true;
+
+if (!isLoggedIn) {
+    console.log("User is not logged in");
+} else {
+    console.log("User is logged in");
+}
+```
 
 5. **Unary Operators**:
 - Unary plus: `+`
+
+```Javascript
+let strNum = "123";
+let num = +strNum;
+
+console.log("String Number:", strNum);
+console.log("Converted Number:", num);
+```
 - Unary minus: `-`
+
+```JAVASCRIPT
+let num = 10;
+let negatedNum = -num;
+
+console.log("Original Number:", num);
+console.log("Negated Number:", negatedNum);
+```
+
 - Logical NOT: `!`
+
+```JAVASCRIPT
+let isLoggedIn = false;
+
+if (!isLoggedIn) {
+    console.log("User is not logged in");
+} else {
+    console.log("User is logged in");
+}
+```
 - Typeof: `typeof`
+
+```javascript
+let num = 5;
+let str = "Hello";
+let bool = true;
+let arr = [1, 2, 3];
+let obj = { key: "value" };
+let func = function() {};
+
+console.log(typeof num);  // Output: "number"
+console.log(typeof str);  // Output: "string"
+console.log(typeof bool); // Output: "boolean"
+console.log(typeof arr);  // Output: "object" (arrays are objects in JavaScript)
+console.log(typeof obj);  // Output: "object"
+console.log(typeof func); // Output: "function"
+```
+
 - Delete: `delete`
+
+```javascript
+let obj = { a: 1, b: 2, c: 3 };
+
+console.log("Before delete:", obj); // Output: { a: 1, b: 2, c: 3 }
+
+delete obj.b;
+
+console.log("After delete:", obj); // Output: { a: 1, c: 3 }
+```
 
 6. **Conditional (Ternary) Operator**:
 - `condition ? expression1 : expression2`
 
+```javascript
+let num = 10;
+let result = num > 0 ? "Positive" : "Non-positive";
+
+console.log("Number is:", result);
+```
+
 7. **Bitwise Operators** (operate on binary representations of numbers):
 - Bitwise AND: `&`
+
+```Javascript
+let num1 = 5;  // Binary: 101
+let num2 = 3;  // Binary: 011
+
+let result = num1 & num2;  // Binary AND: 101 & 011 = 001 (Decimal: 1)
+
+console.log("Result:", result);  // Output: 1
+```
+
 - Bitwise OR: `|`
+
+```javascript
+let num1 = 5;  // Binary: 101
+let num2 = 3;  // Binary: 011
+
+let result = num1 | num2;  // Binary AND: 101 & 011 = 001 (Decimal: 1)
+
+console.log("Result:", result);  // Output: 1
+```
+
 - Bitwise XOR: `^`
+
+```javascript
+let num1 = 5; // Binary: 0101
+let num2 = 3; // Binary: 0011
+
+let result = num1 ^ num2; // Binary result: 0110 (Decimal: 6)
+
+console.log("Result of bitwise XOR:", result);
+```
+
 - Bitwise NOT: `~`
+
+```javascript
+let num = 5;
+let bitwiseNotNum = ~num;
+
+console.log("Original Number:", num);
+console.log("Bitwise NOT Result:", bitwiseNotNum);
+```
+
 - Left shift: `<<`
+
+```javaScript
+let num = 5;
+let shiftedNum = num << 2;
+
+console.log("Original Number:", num);
+console.log("Shifted Number:", shiftedNum);
+```
+
 - Right shift: `>>`
+
+```javaScript
+let num = 5;
+let shiftedNum = num >> 2;
+
+console.log("Original Number:", num);
+console.log("Shifted Number:", shiftedNum);
+```
+
 - Unsigned right shift: `>>>`
+
+```javascript
+let num = -8; // Binary representation: 11111111111111111111111111111000 (32-bit signed integer)
+let shiftedNum = (num >>> 2) & 0x3fffffff; // Simulate unsigned right shift
+
+console.log("Original Number:", num);
+console.log("Unsigned Right Shift Result:", shiftedNum);
+```
 
 Understanding and using these operators effectively is key to writing JavaScript code that performs calculations, makes decisions, and manipulates data efficiently.
 
@@ -537,9 +898,8 @@ JavaScript provides several types of loops to iterate over data or execute code 
    let i = 0;
     do {
        console.log(i);
-       i++;
-    while (i < 5);
-   }
+       i++; 
+    }while (i < 5);
 ```
 
 4. **For...In Loop**: Used to iterate over the properties of an object.
@@ -638,8 +998,19 @@ In JavaScript, objects are a fundamental data structure used to store collection
 3. **Adding or Modifying Properties**:
    
    ```javascript
-   person.gender = "Male"; // Adding a new property
-   person.age = 35; // Modifying an existing property
+   let person = {
+    name: "John",
+    age: 30,
+    city: "New York"
+    };
+
+    // Adding a new property
+    person.gender = "Male";
+
+    // Modifying an existing property
+    person.age = 35;
+
+    console.log(person);
    ```
 
 4. **Nested Objects**:
@@ -654,6 +1025,8 @@ In JavaScript, objects are a fundamental data structure used to store collection
            age: 25
        }
    };
+
+   console.log(car);
    ```
 
 5. **Object Methods** (Functions inside objects):
