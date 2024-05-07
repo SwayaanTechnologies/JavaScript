@@ -1092,14 +1092,140 @@ In JavaScript, an array is a data structure used to store a collection of elemen
 
 5. **Array Methods**:
 - `push()`: Adds one or more elements to the end of an array.
+
+```javascript
+// push
+let fruits = ["apple", "banana", "orange"];
+fruits.push("grape", "kiwi");
+console.log(fruits); // Output: ["apple", "banana", "orange", "grape", "kiwi"]
+```
+
 - `pop()`: Removes the last element from an array.
+
+```javascript
+let fruits = ["apple", "banana", "orange"];
+let lastFruit = fruits.pop();
+console.log(lastFruit); // Output: "orange"
+console.log(fruits); // Output: ["apple", "banana"]
+```
+
 - `shift()`: Removes the first element from an array.
+
+```javascript
+let fruits = ["apple", "banana", "orange"];
+let firstFruit = fruits.shift();
+console.log(firstFruit); // Output: "apple"
+console.log(fruits); // Output: ["banana", "orange"]
+```
+
 - `unshift()`: Adds one or more elements to the beginning of an array.
+
+```javascript
+let fruits = ["apple", "banana", "orange"];
+fruits.unshift("grape", "kiwi");
+console.log(fruits); // Output: ["grape", "kiwi", "apple", "banana", "orange"]
+```
+
 - `splice()`: Adds or removes elements from an array at a specified index.
+
+    - Remove()
+
+    ```javascript
+    let fruits = ["apple", "banana", "orange", "grape", "kiwi"];
+    let removedFruits = fruits.splice(1, 2); // Removes elements from index 1 to 2 (inclusive)
+    console.log(removedFruits); // Output: ["banana", "orange"]
+    console.log(fruits); // Output: ["apple", "grape", "kiwi"]
+
+    ```
+    - Adding()
+
+    ```javascript
+    let fruits = ["apple", "grape", "kiwi"];
+    fruits.splice(1, 0, "banana", "orange"); // Adds "banana" and "orange" at index 1
+    console.log(fruits); // Output: ["apple", "banana", "orange", "grape", "kiwi"]
+    ```
+
+    - Replacing()
+
+    ```javascript
+    let fruits = ["apple", "banana", "orange"];
+    fruits.splice(1, 1, "grape"); // Replaces element at index 1 with "grape"
+    console.log(fruits); // Output: ["apple", "grape", "orange"]
+    ```
+
 - `concat()`: Combines two or more arrays.
+
+```javascript
+// Two array
+let array1 = [1, 2, 3];
+let array2 = [4, 5, 6];
+let newArray = array1.concat(array2);
+console.log(newArray); // Output: [1, 2, 3, 4, 5, 6]
+```
+
+```javascript
+// Multiple
+let array1 = [1, 2];
+let array2 = [3, 4];
+let array3 = [5, 6];
+let newArray = array1.concat(array2, array3);
+
+console.log(newArray); // Output: [1, 2, 3, 4, 5, 6]
+```
+
+```javascript
+// No array elements
+let array1 = [1, 2];
+let array2 = "hello";
+let newArray = array1.concat(array2);
+
+console.log(newArray); // Output: [1, 2, "hello"]
+```
+
 - `slice()`: Extracts a portion of an array into a new array.
+
+```javascript
+const fruits = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
+// Extract elements from index 1 to index 3 (inclusive of 1, exclusive of 3)
+const slicedFruits = fruits.slice(1, 3);
+console.log(slicedFruits); // Output: ['banana', 'cherry']
+```
+
 - `indexOf()`: Returns the index of the first occurrence of a specified element in an array.
+
+```javascript
+// indexof() Arrays
+const fruits = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
+
+const index = fruits.indexOf('cherry');
+console.log(index); // Output: 2
+```
+
+```javascript
+// indexof() Strings
+const sentence = 'Hello, world!';
+
+const index = sentence.indexOf('world');
+console.log(index); // Output: 7
+```
+
 - `includes()`: Checks if an array includes a certain element.
+
+```javascript
+// includes() Array
+const fruits = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
+
+const hasCherry = fruits.includes('cherry');
+console.log(hasCherry); // Output: true
+```
+
+```javascript
+// includes() Strings
+const sentence = 'Hello, world!';
+
+const hasWorld = sentence.includes('world');
+console.log(hasWorld); // Output: true
+```
 
 Arrays are commonly used in JavaScript to store and manipulate collections of data, such as lists of items, numerical data, or even complex objects.
 
@@ -1137,12 +1263,73 @@ In JavaScript, a string is a sequence of characters enclosed within single (' ')
 
 5. **String Methods**:
 - `toUpperCase()`: Converts a string to uppercase.
+
+```javascript
+const str = 'hello, world!';
+const upperCaseStr = str.toUpperCase();
+console.log(upperCaseStr); // Output: HELLO, WORLD!
+```
+
 - `toLowerCase()`: Converts a string to lowercase.
+
+```javascript
+let str = "Hello World";
+let lowercaseStr = str.toLowerCase();
+
+console.log(lowercaseStr); // Output: "hello world"
+```
+
 - `charAt(index)`: Returns the character at the specified index.
+
+```javascript
+let str = "Muralitharan";
+console.log(str.charAt(6)); // Output: "e"
+```
+
 - `indexOf(substring)`: Returns the index of the first occurrence of a substring.
+
+```javascript
+let str = "Hello, welcome to JavaScript!";
+let index = str.indexOf("to");
+console.log(index); // Output: 7
+```
+
 - `substring(startIndex, endIndex)`: Extracts a portion of a string.
+
+```javascript
+let str = "Hello, welcome to JavaScript!";
+let sub = str.substring(7, 17);
+console.log(sub); // Output: "welcome" 
+```
+
 - `split(separator)`: Splits a string into an array of substrings based on a separator.
+
+```javascript
+let str = "apple,banana,orange";
+let fruits = str.split(",");
+console.log(fruits); // Output: ["apple", "banana", "orange"]
+```
+
+```javascript
+let sentence = "Hello world! How are you?";
+let words = sentence.split(" ");
+console.log(words); // Output: ["Hello", "world!", "How", "are", "you?"]
+```
+
+```javascript
+let str = "hello";
+let characters = str.split("");
+console.log(characters); // Output: ["h", "e", "l", "l", "o"]
+```
+
+
 - `trim()`: Removes whitespace from both ends of a string.
+
+```javascript
+let str = "   Hello, world!   ";
+let trimmedStr = str.trim();
+console.log(trimmedStr); // Output: "Hello, world!"
+```
 
 6. **Template Literals** (ES6+):
 
@@ -1210,6 +1397,44 @@ In JavaScript, the `Date` object is used to work with dates and times. Here's an
    }
    ```
 
+Example
+
+```javascript
+// Creating a Date object for the current date and time
+let currentDate = new Date();
+console.log("Current date and time:", currentDate);
+
+// Getting specific components of a date
+let year = currentDate.getFullYear();
+let month = currentDate.getMonth(); // Note: Month starts from 0 (January is 0)
+let day = currentDate.getDate();
+let hours = currentDate.getHours();
+let minutes = currentDate.getMinutes();
+let seconds = currentDate.getSeconds();
+
+console.log("Year:", year);
+console.log("Month:", month + 1); // Adding 1 to month to display correctly
+console.log("Day:", day);
+console.log("Hours:", hours);
+console.log("Minutes:", minutes);
+console.log("Seconds:", seconds);
+
+// Formatting dates as strings
+let dateString = currentDate.toDateString();
+let isoString = currentDate.toISOString();
+let utcString = currentDate.toUTCString();
+
+console.log("Date string:", dateString);
+console.log("ISO string:", isoString);
+console.log("UTC string:", utcString);
+
+// Parsing dates from strings
+let dateStringExample = "2024-05-07T12:30:00Z";
+let parsedDate = new Date(Date.parse(dateStringExample));
+console.log("Parsed date:", parsedDate);
+```
+
+
 The `Date` object in JavaScript provides a wide range of methods for working with dates and times, making it versatile for handling various date-related tasks in web development and other applications.
 
 ### JavaScript Math
@@ -1229,12 +1454,27 @@ JavaScript's `Math` object provides built-in mathematical functions and constant
 
 2. **Rounding Numbers**:
 
-   ```javascript
-   let number = 3.7;
-   console.log(Math.round(number)); // Round to the nearest integer
-   console.log(Math.floor(number)); // Round down to the nearest integer
-   console.log(Math.ceil(number)); // Round up to the nearest integer
-   ```
+    ```javascript
+    // Math.round()
+    let num = 4.7;
+    let roundedNum = Math.round(num); // roundedNum = 5
+    console.log(roundedNum); // Output: 5
+
+    // Math.floor()
+    let num = 4.7;
+    let roundedNum = Math.floor(num); // roundedNum = 4
+    console.log(roundedNum); // Output: 4
+
+    // Math.ceil()
+    let num = 4.2;
+    let roundedNum = Math.ceil(num); // roundedNum = 5
+    console.log(roundedNum); // Output: 5
+
+    //Number.toFixed()
+    let num = 4.5678;
+    let roundedNum = num.toFixed(2); // roundedNum = "4.57"
+    console.log(roundedNum); // Output: "4.57"
+    ```
 
 3. **Generating Random Numbers**:
 
@@ -1381,37 +1621,6 @@ These objects allow developers to create dynamic and interactive web application
 
 Sure, here's an example of how you can use some of the browser objects in JavaScript:
 
-```javascript
-// Accessing the window object
-console.log(window.innerWidth); // Get the inner width of the browser window
-console.log(window.location.href); // Get the URL of the current page
-
-// Accessing the document object
-const heading = document.createElement('h1'); // Create a new <h1> element
-heading.textContent = 'Hello, Browser Objects!'; // Set the text content of the heading
-document.body.appendChild(heading); // Append the heading to the document body
-
-// Accessing the navigator object
-console.log(navigator.userAgent); // Get the user agent string
-console.log(navigator.language); // Get the user's preferred language
-
-// Accessing the screen object
-console.log(screen.width); // Get the screen width
-console.log(screen.availHeight); // Get the available screen height
-
-// Accessing the history object
-console.log(history.length); // Get the number of entries in the history stack
-history.back(); // Go back to the previous page in the history
-```
-
-In this example:
-
-- We use `window.innerWidth` to get the inner width of the browser window.
-- `window.location.href` retrieves the URL of the current page.
-- With the `document` object, we create an `<h1>` element, set its text content, and append it to the document body.
-- `navigator.userAgent` fetches the user agent string, and `navigator.language` retrieves the user's preferred language.
-- `screen.width` gets the screen width, and `screen.availHeight` gets the available screen height.
-- `history.length` gives the number of entries in the history stack, and `history.back()` navigates back to the previous page in the history.
 
 #### Window Object
 
