@@ -346,11 +346,17 @@ However, using global variables extensively is not recommended because they can 
 JavaScript supports several data types that are used to represent different kinds of values. Here are the basic data types in JavaScript:
 
 1. **Primitive Data Types**:
+   
    - **Number**: Represents numeric values. Example: `let num = 42;`
+
    - **String**: Represents textual data. Example: `let message = "Hello, world!";`
+
    - **Boolean**: Represents true or false values. Example: `let isTrue = true;`
+
    - **Undefined**: Represents a variable that has been declared but not assigned a value. Example: `let x;`
+
    - **Null**: Represents the intentional absence of any value. Example: `let y = null;`
+   
    - **Symbol** (ES6+): Represents unique identifiers. Example: `const key = Symbol();`
 
 2. **Composite Data Types**:
