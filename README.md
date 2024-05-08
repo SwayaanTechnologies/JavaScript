@@ -356,7 +356,7 @@ JavaScript supports several data types that are used to represent different kind
    - **Undefined**: Represents a variable that has been declared but not assigned a value. Example: `let x;`
 
    - **Null**: Represents the intentional absence of any value. Example: `let y = null;`
-   
+
    - **Symbol** (ES6+): Represents unique identifiers. Example: `const key = Symbol();`
 
 2. **Composite Data Types**:
@@ -2332,9 +2332,113 @@ By setting the `useCapture` parameter to `true`, you specify that the event shou
 The `classList` property in JavaScript provides methods to add, remove, toggle, and check for the presence of CSS classes on an element. This property is available on DOM elements and is very useful for dynamically manipulating classes and styles. Here are the main methods available in `classList`:
 
 1. **`add(className)`**: Adds a CSS class to the element.
+
+```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Class Example</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    </head>
+    <body>
+    <button onclick="addClassToElement()">Add Class</button>
+    <div id="targetElement">This is a target element</div>
+
+    <script src="script.js"></script>
+    </body>
+    </html>
+```
+
+```Javascript
+function addClassToElement() {
+    const targetElement = document.getElementById('targetElement');
+    targetElement.classList.add('highlight');
+  }  
+```
+
 2. **`remove(className)`**: Removes a CSS class from the element.
+
+```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Class Example</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    </head>
+    <body>
+    <button onclick="removeClassFromElement()">Remove Class</button>
+    <div id="targetElement" class="highlight">This is a target element</div>
+
+    <script src="script.js"></script>
+    </body>
+    </html>
+```
+
+```javascript
+function removeClassFromElement() {
+    const targetElement = document.getElementById('targetElement');
+    targetElement.classList.remove('highlight');
+  }  
+```
+
 3. **`toggle(className)`**: Toggles the presence of a CSS class. If the class is present, it removes it; if not, it adds it.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggle Class Example</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+  <button onclick="toggleClassOnElement()">Toggle Class</button>
+  <div id="targetElement">This is a target element</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+```javascript
+function toggleClassOnElement() {
+  const targetElement = document.getElementById('targetElement');
+  targetElement.classList.toggle('highlight');
+}
+```
+
 4. **`contains(className)`**: Checks if the element has a specific CSS class.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contains Class Example</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+  <button onclick="checkClassOnElement()">Check Class</button>
+  <div id="targetElement" class="highlight">This is a target element</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+```javascript
+function checkClassOnElement() {
+  const targetElement = document.getElementById('targetElement');
+  const containsClass = targetElement.classList.contains('highlight');
+  console.log('Contains Class:', containsClass);
+}
+```
 
 Here's an example demonstrating the usage of `classList` methods:
 
@@ -3107,6 +3211,8 @@ const person = {
     }
 };
 
+person.greet(); // Outputs: Hello, my name is John
+
 // Constructor function
 function Person(name, age) {
     this.name = name;
@@ -3117,6 +3223,8 @@ function Person(name, age) {
 }
 
 const john = new Person('John', 30);
+john.greet(); // Outputs: Hello, my name is John
+
 ```
 
 ### JavaScript Prototype
@@ -3502,6 +3610,64 @@ In all these examples, abstraction is achieved by exposing only the necessary me
 ## JavaScript Cookies
 
 Cookies in JavaScript are small pieces of data that websites can store on a user's browser. They are commonly used for various purposes such as remembering user preferences, tracking user behavior, and maintaining user sessions. Here's how you can work with cookies in JavaScript:
+
+In Node.js, working with cookies is a bit different compared to client-side JavaScript (which runs in a web browser). Node.js typically handles cookies in the context of server-side web development, such as creating, reading, and manipulating cookies as part of HTTP request and response handling.
+
+Here's an example of how you can work with cookies in a Node.js web application using the Express framework:
+
+1. **Install Express and Cookie-parser:**
+   First, make sure you have Node.js installed. Then, create a new Node.js project and install Express and the cookie-parser middleware.
+
+   ```bash
+   mkdir myapp
+   cd myapp
+   npm init -y
+   npm install express cookie-parser
+   ```
+
+2. **Create an Express App:**
+   Create an `app.js` file with the following code to set up an Express server and configure the cookie-parser middleware:
+
+   ```javascript
+   const express = require('express');
+   const cookieParser = require('cookie-parser');
+
+   const app = express();
+   const PORT = 3000;
+
+   // Use cookie-parser middleware
+   app.use(cookieParser());
+
+   // Route to set a cookie
+   app.get('/set-cookie', (req, res) => {
+       res.cookie('myCookie', 'Hello from cookie!');
+       res.send('Cookie set!');
+   });
+
+   // Route to read a cookie
+   app.get('/read-cookie', (req, res) => {
+       const myCookie = req.cookies.myCookie;
+       res.send(`Cookie value: ${myCookie}`);
+   });
+
+   app.listen(PORT, () => {
+       console.log(`Server running on port ${PORT}`);
+   });
+   ```
+
+3. **Run the Express App:**
+   Start your Express server by running `node app.js` in your terminal. Your server will start running on port 3000 by default.
+
+4. **Test the Cookie Endpoints:**
+   Use a web browser or a tool like cURL or Postman to test the cookie endpoints:
+   - Access `http://localhost:3000/set-cookie` to set a cookie.
+   - Access `http://localhost:3000/read-cookie` to read the cookie.
+
+   You should see "Cookie set!" when setting the cookie and "Cookie value: Hello from cookie!" when reading the cookie.
+
+In this example, we used the `cookie-parser` middleware to parse cookies in incoming HTTP requests and set cookies in outgoing HTTP responses. This is a basic example, and in a real-world application, you would handle cookies based on your specific requirements, such as setting expiration dates, managing multiple cookies, and handling cookie security.
+
+Is there anything specific you'd like to know more about regarding cookies in Node.js or web development?
 
 ### Cookie Attributes
 

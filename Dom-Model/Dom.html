@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Model Example</title>
+</head>
+<body>
+    <h1>DOM Model Example</h1>
+
+    <!---Dom Model -->
+    <div id="content">
+        <!-- New paragraph will be added here -->
+    </div>
+<br>
+
+    <!--Dom other Object-->
+        <!--Element Object-->
+    <div id="myElement">
+        <h1>Element object</h1>
+        Hello, world!
+    </div>
+<br>
+
+    <!--NodeList object-->
+    <ul id="myList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+<br>      
+
+    <!--Event Object-->
+    <button id="myButton">
+        Click me
+    </button>
+    <br>
+
+    <!--Window Object-->
+    <button onclick="openNewWindow()">Open New Window</button>
+    <button onclick="closeCurrentWindow()">Close Current Window</button>
+    <br>
+
+<!--DOM Get Method-->
+    <h1 id="mainHeading">Welcome to my Website</h1>
+    <div id="content">
+        <p>This is a paragraph.</p>
+    </div>
+    <br>
+
+<!--DOM styling-->
+    <h1>Welcome to my Website </h1>
+    <p id="paragraph">
+        This is a paragraph.
+    </p>
+    <button onclick="highlightText()">
+        Click
+    </button>
+    <br>
+<br>
+
+<!--AddEventListener-->
+    <button id="myButton">
+        Click Me
+    </button>
+    <br>
+    <br>
+
+<!--UseCapture-->
+    <div id="outer">
+        <div id="inner">Inner Div</div>
+    </div>
+<br>
+
+<!--ClassList method-->
+<!--add(className)-->
+    <button onclick="addClassToElement()">Add Class</button>
+    <div id="targetElement">This is a target element</div>
+    <br>
+
+    <!--remove(className)-->
+    <button onclick="removeClassFromElement()">Remove Class</button>
+    <div id="targetElement" class="highlight">This is a target element</div>
+    <br>
+
+<!--toggle(className)-->
+    <button onclick="toggleClassOnElement()">Toggle Class</button>
+    <div id="targetElement">This is a target element</div>
+    <br>
+
+<!--contains(className)-->
+    <button onclick="checkClassOnElement()">Check Class</button>
+    <div id="targetElement" class="highlight">This is a target element</div>
+    <br>
+
+<!--Parent nodes-->
+    <div id="outerDiv">
+        <div id="innerDiv">
+            <p id="paragraph">Muralitharan</p>
+        </div>
+    </div>
+    <button onclick="showParent()">Show Parent</button>
+
+<!--Children nodes-->
+    <div id="parentDiv">
+    <p>This is a paragraph.</p>
+    <span>Element</span>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    </div>
+    <button onclick="showChildren()">Show Children</button>
+
+<!--First and last child-->
+    <div id="parentDiv">
+        <p>This is the first paragraph.</p>
+        <span>This is a span element.</span>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <p>This is the last paragraph.</p>
+    </div>
+    <button onclick="showFirstChild()">Show First Child</button>
+    <button onclick="showLastChild()">Show Last Child</button>
+    <br>
+
+<!--Next and previous siblings-->
+    <div id="parentDiv">
+    <p>This is the first paragraph.</p>
+    <span>This is a span element.</span>
+    <ul>
+        <li>Item 1</li>
+        <li id="targetElement">Target Element</li>
+        <li>Item 3</li>
+    </ul>
+    <p>This is the last paragraph.</p>
+    </div>
+    <button onclick="showNextSibling()">Show Next Sibling</button>
+    <button onclick="showPreviousSibling()">Show Previous Sibling</button>
+    <br>
+   
+<!--Create element text node-->
+    <div id="container">
+        <!-- New elements will be added here -->
+    </div>
+    <br>
+
+<!--Append child and insert before-->
+    <div id="container">
+        <!-- New elements will be added here -->
+        <p>Existing Paragraph 1</p>
+        <p>Existing Paragraph 2</p>
+    </div>
+    <br>
+
+<!--Insert adjacent element and insert adjacent HTML-->
+    <div id="container">
+        <p>Existing Paragraph 1</p>
+        <p>Existing Paragraph 2</p>
+    </div>
+    <br>
+
+<!--JavaScript form validation-->
+    <form id="myForm" onsubmit="return validateForm()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <span id="usernameError" style="color: red;"></span><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <span id="emailError" style="color: red;"></span><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <span id="passwordError" style="color: red;"></span><br>
+
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+
+
+<!-- JavaScript email validation-->
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email">
+    <span id="emailError" style="color: red;"></span><br>
+
+    <button onclick="validateEmail()">Validate Email</button>
+    <br>
+
+
+
+
+
+    <script src="script.js"></script>
+    <script src="script1.js"></script>
+    <script src="script2.js"></script>
+    <script src="script3.js"></script>
+    <script src="script4.js"></script>
+    <script src="script5.js"></script>
+    <script src="script6.js"></script>
+    <script src="script7.js"></script>
+    <script src="script8.js"></script>
+    <script src="script9.js"></script>
+    <script src="script10.js"></script>
+    <script src="script11.js"></script>
+    <script src="script12.js"></script>
+    <script src="script13.js"></script>
+    <script src="script14.js"></script>
+    <script src="script15.js"></script>
+    <script src="script16.js"></script>
+    <script src="script17.js"></script>
+    <script src="script18.js"></script>
+    <script src="script19.js"></script>
+    <script src="script20.js"></script>
+    <script src="script21.js"></script>
+    <script src="script22.js"></script>
+
+</body>
+</html>
