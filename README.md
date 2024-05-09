@@ -360,11 +360,20 @@ JavaScript supports several data types that are used to represent different kind
    - **Symbol** (ES6+): Represents unique identifiers. Example: `const key = Symbol();`
 
 2. **Composite Data Types**:
-   - **Object**: Represents a collection of key-value pairs. Example: `let person = { name: "John", age: 30 };`
-   - **Array**: Represents a collection of elements, indexed by integers. Example: `let numbers = [1, 2, 3, 4];`
+
+   - **Object**: Represents a collection of key-value pairs. 
+   
+   Example: `let person = { name: "John", age: 30 };`
+
+   - **Array**: Represents a collection of elements, indexed by integers. 
+   
+   Example: `let numbers = [1, 2, 3, 4];`
 
 3. **Special Data Types**:
-   - **Function**: Functions are a type of object but can be called like a regular function. Example: `function add(a, b) { return a + b; }`
+
+   - **Function**: Functions are a type of object but can be called like a regular function. 
+   
+   Example: `function add(a, b) { return a + b; }`
 
 JavaScript is dynamically typed, meaning you don't need to explicitly declare the data type of a variable; the type is automatically determined based on the value assigned to it.
 
@@ -1460,7 +1469,7 @@ JavaScript's `Math` object provides built-in mathematical functions and constant
 
 2. **Rounding Numbers**:
 
-    ```javascript
+```javascript
     // Math.round()
     let num = 4.7;
     let roundedNum = Math.round(num); // roundedNum = 5
@@ -1480,7 +1489,7 @@ JavaScript's `Math` object provides built-in mathematical functions and constant
     let num = 4.5678;
     let roundedNum = num.toFixed(2); // roundedNum = "4.57"
     console.log(roundedNum); // Output: "4.57"
-    ```
+```
 
 3. **Generating Random Numbers**:
 
@@ -3305,9 +3314,9 @@ Static methods are not tied to specific object instances, so they can be used fo
 
 ### JavaScript Encapsulation
 
-JavaScript doesn't have access modifiers like private or protected, but you can achieve encapsulation by using closure and module patterns to create private variables and methods.
+- JavaScript doesn't have access modifiers like private or protected, but you can achieve encapsulation by using closure and module patterns to create private variables and methods.
 
-Encapsulation in JavaScript refers to the bundling of data (properties) and methods (functions) that operate on the data into a single unit, called an object. This concept helps in hiding the internal state and implementation details of an object from the outside world, promoting data abstraction and reducing complexity.
+- Encapsulation in JavaScript refers to the bundling of data (properties) and methods (functions) that operate on the data into a single unit, called an object. This concept helps in hiding the internal state and implementation details of an object from the outside world, promoting data abstraction and reducing complexity.
 
 Here's an example of encapsulation in JavaScript using object literals and closures:
 
@@ -3410,7 +3419,7 @@ In both examples using constructor functions and classes, we encapsulate private
 
  In JavaScript, inheritance is achieved by linking objects through their prototypes. Child objects inherit properties and methods from their parent object's prototype.
 
- ```javascript
+```javascript
 function Animal(type) {
     this.type = type;
 }
@@ -3430,13 +3439,13 @@ Dog.prototype.constructor = Dog;
 
 const dog = new Dog('Buddy');
 dog.sound(); // Output: Dog makes a sound
- ```
+```
 
 ### JavaScript Polymorphism
 
-Polymorphism in JavaScript is achieved through method overriding and method overloading. By dynamically changing object behaviors through prototypes and functions, you can implement polymorphic behavior.
+- Polymorphism in JavaScript is achieved through method overriding and method overloading. By dynamically changing object behaviors through prototypes and functions, you can implement polymorphic behavior.
 
-In JavaScript, polymorphism refers to the ability of objects to respond to the same method or property in different ways based on their specific types or classes. Polymorphism is achieved through method overriding and method overloading, although JavaScript does not have native support for method overloading like some other languages. Here's how you can implement polymorphism in JavaScript using method overriding:
+- In JavaScript, polymorphism refers to the ability of objects to respond to the same method or property in different ways based on their specific types or classes. Polymorphism is achieved through method overriding and method overloading, although JavaScript does not have native support for method overloading like some other languages. Here's how you can implement polymorphism in JavaScript using method overriding:
 
 1. **Method Overriding**:
    Method overriding occurs when a subclass provides a specific implementation for a method that is already defined in its superclass. This allows objects of different classes to share a common interface while providing custom behavior for specific instances. Here's an example:
@@ -3514,9 +3523,9 @@ Polymorphism allows for code reuse, flexibility, and extensibility in object-ori
 
 ### JavaScript Abstraction
 
-Abstraction in JavaScript involves hiding complex implementation details and exposing only necessary interfaces. Constructor functions and prototypes help create abstraction by defining public methods and properties.
+- Abstraction in JavaScript involves hiding complex implementation details and exposing only necessary interfaces. Constructor functions and prototypes help create abstraction by defining public methods and properties.
 
-Abstraction in JavaScript refers to the concept of hiding complex implementation details and exposing only necessary interfaces or functionalities. It allows developers to focus on using objects or functions without needing to understand their internal complexities. Abstraction helps in reducing code complexity, improving code reusability, and enhancing maintainability. Here are some ways to implement abstraction in JavaScript:
+- Abstraction in JavaScript refers to the concept of hiding complex implementation details and exposing only necessary interfaces or functionalities. It allows developers to focus on using objects or functions without needing to understand their internal complexities. Abstraction helps in reducing code complexity, improving code reusability, and enhancing maintainability. Here are some ways to implement abstraction in JavaScript:
 
 1. **Constructor Functions with Prototypes:**
    Using constructor functions along with prototypes is a common way to achieve abstraction in JavaScript. You can define public methods and properties that are accessible from outside the object, while keeping internal details private.
@@ -3609,9 +3618,9 @@ In all these examples, abstraction is achieved by exposing only the necessary me
 
 ## JavaScript Cookies
 
-Cookies in JavaScript are small pieces of data that websites can store on a user's browser. They are commonly used for various purposes such as remembering user preferences, tracking user behavior, and maintaining user sessions. Here's how you can work with cookies in JavaScript:
+- Cookies in JavaScript are small pieces of data that websites can store on a user's browser. They are commonly used for various purposes such as remembering user preferences, tracking user behavior, and maintaining user sessions. Here's how you can work with cookies in JavaScript:
 
-In Node.js, working with cookies is a bit different compared to client-side JavaScript (which runs in a web browser). Node.js typically handles cookies in the context of server-side web development, such as creating, reading, and manipulating cookies as part of HTTP request and response handling.
+ - In Node.js, working with cookies is a bit different compared to client-side JavaScript (which runs in a web browser). Node.js typically handles cookies in the context of server-side web development, such as creating, reading, and manipulating cookies as part of HTTP request and response handling.
 
 Here's an example of how you can work with cookies in a Node.js web application using the Express framework:
 
@@ -3667,15 +3676,14 @@ Here's an example of how you can work with cookies in a Node.js web application 
 
 In this example, we used the `cookie-parser` middleware to parse cookies in incoming HTTP requests and set cookies in outgoing HTTP responses. This is a basic example, and in a real-world application, you would handle cookies based on your specific requirements, such as setting expiration dates, managing multiple cookies, and handling cookie security.
 
-Is there anything specific you'd like to know more about regarding cookies in Node.js or web development?
 
 ### Cookie Attributes
 
 Cookies can have various attributes such as `expires` (to set expiration date), `path` (to specify the URL path the cookie is valid for), `domain` (to specify the domain the cookie is valid for), `secure` (to indicate if the cookie should only be sent over HTTPS), and `samesite` (to control when cookies are sent in cross-site requests).
 
-   ```javascript
+```javascript
    document.cookie = 'username=John Doe; expires=Fri, 31 Dec 2024 23:59:59 GMT; path=/; secure; samesite=strict';
-   ```
+```
 
 ### Cookie with multiple Name
 
@@ -3689,7 +3697,6 @@ document.cookie = "name1=value1; name2=value2; name3=value3";
 
 In this example, the cookie contains three name-value pairs: "name1=value1", "name2=value2", and "name3=value3". You can then access these values individually when needed.
 
-Is there anything specific you'd like to know or do with cookies containing multiple names?
 
 ### Deleting Cookies
 
@@ -3719,15 +3726,22 @@ JavaScript events are actions or occurrences that happen in the browser or docum
 Here are some common JavaScript events:
 
 1. **Mouse Events**:
-   - `click`: Occurs when a mouse button is clicked on an element.
-   - `mouseover`: Fires when the mouse pointer enters an element.
-   - `mouseout`: Fires when the mouse pointer leaves an element.
-   - `mousemove`: Occurs when the mouse pointer is moved over an element.
+
+    - `click`: Occurs when a mouse button is clicked on an element.
+
+    - `mouseover`: Fires when the mouse pointer enters an element.
+
+    - `mouseout`: Fires when the mouse pointer leaves an element
+
+    - `mousemove`: Occurs when the mouse pointer is moved over an element.
 
 2. **Keyboard Events**:
-   - `keydown`: Triggered when a key is pressed down.
-   - `keyup`: Fired when a key is released.
-   - `keypress`: Occurs when a key is pressed down and released.
+
+    - `keydown`: Triggered when a key is pressed down.
+
+    - `keyup`: Fired when a key is released.
+
+    - `keypress`: Occurs when a key is pressed down and released.
 
 3. **Form Events**:
    - `submit`: Fired when a form is submitted.
@@ -3758,9 +3772,14 @@ element.addEventListener(event, function, useCapture);
 ```
 
 - `element`: The DOM element to which you want to attach the event listener.
+
 - `event`: A string specifying the name of the event to listen for (e.g., "click", "mouseover", "keydown").
+
 - `function`: The function to be executed when the specified event occurs.
-- `useCapture` (optional): A boolean value that specifies whether the event should be captured during the event propagation phase. This parameter is typically set to `false` for most cases.
+
+- `useCapture` (optional): A boolean value that specifies whether the event should be captured during the event propagation phase. 
+
+This parameter is typically set to `false` for most cases.
 
 Here's an example of using `addEventListener()` to handle a click event on a button:
 
@@ -3772,7 +3791,9 @@ document.getElementById("myButton").addEventListener("click", function() {
 
 In this example:
 - `document.getElementById("myButton")` selects the button element with the ID "myButton".
+
 - `.addEventListener("click", function() { ... })` attaches an event listener for the "click" event to the button.
+
 - `function() { alert("Button clicked!"); }` is the event handler function that displays an alert when the button is clicked.
 
 You can use `addEventListener()` to handle various types of events such as mouse events, keyboard events, form events, and more. It's a versatile method for adding interactivity to web pages.

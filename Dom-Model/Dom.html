@@ -183,7 +183,7 @@
     <br>
 
 
-<!-- JavaScript email validation-->
+<!-- 22.JavaScript email validation-->
     <label for="email">Email:</label>
     <input type="text" id="email" name="email">
     <span id="emailError" style="color: red;"></span><br>
@@ -191,7 +191,45 @@
     <button onclick="validateEmail()">Validate Email</button>
     <br>
 
+<!--23.mouseover-->
+    <div id="target">Hover over me!</div>
 
+<!--mouseout-->
+    <div id="target" onmouseout="handleMouseOut()">Move the mouse out of me!</div>
+    <script>
+        function handleMouseOut() {
+        fetch('/mouseout', { method: 'POST' })
+            .then(response => {
+            if (response.ok) {
+                console.log('Mouse out event sent to server.');
+            } else {
+                console.error('Error sending mouse out event to server.');
+            }
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            });
+        }
+    </script>
+
+    <!--mousemove-->
+  <script>
+    const Socket = io();
+
+    document.addEventListener('mousemove', (event) => {
+      const { clientX, clientY } = event;
+      socket.emit('mousemove', { x: clientX, y: clientY });
+    });
+  </script>
+
+  <!--Keyup-->
+  <script>
+    const socket = new WebSocket('ws://localhost:8080');
+
+    document.addEventListener('keyup', function(event) {
+      socket.send(event.key);
+    });
+  </script>
 
 
 
@@ -218,6 +256,10 @@
     <script src="script20.js"></script>
     <script src="script21.js"></script>
     <script src="script22.js"></script>
+    <script src="script23.js"></script>
+    <script src="script24.js"></script>
+    <script src="script25.js"></script>
+    <script src="script26.js"></script>
 
 </body>
 </html>
