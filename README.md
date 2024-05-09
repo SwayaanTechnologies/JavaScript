@@ -4298,97 +4298,7 @@ In this example, the `greet` function returns a greeting message as a string. Wh
 
 It's important to note that when a function encounters a `return` statement, it immediately exits the function, and no further code in that function is executed.
 
-## Loops
-
-Loops in JavaScript are used to repeat a block of code multiple times until a certain condition is met. There are different types of loops in JavaScript, including for loops, while loops, and do...while loops. Here's an overview of each type:
-
-
-### While
-
-The `while` loop in JavaScript is used to execute a block of code repeatedly as long as a specified condition is true. It's often used when you don't know in advance how many times the loop should run but have a condition that determines when the loop should stop. Here's the basic syntax of a `while` loop:
-
-```javascript
-while (condition) {
-  // Code to be executed while the condition is true
-}
-```
-
-Here's an example of a `while` loop that counts from 1 to 5:
-
-```javascript
-let i = 1;
-while (i <= 5) {
-  console.log(i);
-  i++;
-}
-```
-
-In this example:
-- `let i = 1;` initializes a variable `i` to `1`.
-- `while (i <= 5)` is the condition that checks if `i` is less than or equal to `5`.
-- `console.log(i);` outputs the current value of `i`.
-- `i++;` increments `i` by `1` after each iteration.
-
-The loop continues to execute as long as the condition `i <= 5` is true. Once `i` becomes `6`, the condition becomes false, and the loop terminates.
-
-You can use `while` loops to perform tasks such as iterating through arrays, processing user input until a specific condition is met, or implementing game loops.
-
-Do you have any specific questions about using `while` loops, or would you like to see more examples?
-
-### Do While
-
-The `do...while` loop in JavaScript is similar to the `while` loop, but with one key difference: the `do...while` loop executes the code block at least once, regardless of whether the condition is initially true or false. After the first execution, it evaluates the condition. If the condition is true, the loop continues; if it's false, the loop terminates. Here's the basic syntax of a `do...while` loop:
-
-```javascript
-do {
-  // Code to be executed at least once
-} while (condition);
-```
-
-Here's an example of a `do...while` loop that counts from 1 to 5:
-
-```javascript
-let i = 1;
-do {
-  console.log(i);
-  i++;
-} while (i <= 5);
-```
-
-In this example:
-- `let i = 1;` initializes a variable `i` to `1`.
-- The `do` block contains `console.log(i);` to output the current value of `i`, and `i++` to increment `i` by `1`.
-- `while (i <= 5)` is the condition that checks if `i` is less than or equal to `5`.
-
-Even if `i` is initially greater than `5`, the `do...while` loop will execute the code block at least once before checking the condition. This makes it useful when you want to ensure that a piece of code runs at least once, regardless of the condition's initial state.
-
-Here's another example where the condition is initially false:
-
-```javascript
-let userInput;
-do {
-  userInput = prompt("Enter a number greater than 5:");
-} while (parseInt(userInput) <= 5);
-
-console.log("User input:", userInput);
-```
-
-In this example, the `do...while` loop prompts the user to enter a number greater than `5`, and it continues to prompt until the user enters a valid number that satisfies the condition.
-
-### For 
-
-The for loop is used when you know the number of times you want to repeat a block of code. It consists of three parts: initialization, condition, and iteration. Here's an example of a for loop that counts from 1 to 5:
-
-```javascript
-for (let i = 1; i <= 5; i++) {
-  console.log(i);
-}
-```
-
-In this loop:
-- let i = 1; initializes a variable i to 1.
-- i <= 5; is the condition that specifies when the loop should continue.
-- i++ is the iteration statement that increments i by 1 after each iteration.
+## Arrays
 
 ### Nested
 
@@ -4489,16 +4399,7 @@ Strings in JavaScript are sequences of characters, such as letters, numbers, and
    console.log(str.length); // Output: 13
    ```
 
-2. **toUpperCase()** and **toLowerCase()**:
-   These methods change the case of the string characters. `toUpperCase()` converts all characters to uppercase, while `toLowerCase()` converts them to lowercase. Example:
-
-   ```javascript
-   let str = "Hello, World!";
-   console.log(str.toUpperCase()); // Output: "HELLO, WORLD!"
-   console.log(str.toLowerCase()); // Output: "hello, world!"
-   ```
-
-3. **charAt()** and **charCodeAt()**:
+2. **charAt()** and **charCodeAt()**:
    - `charAt(index)` returns the character at the specified index in the string.
    - `charCodeAt(index)` returns the Unicode value (integer code) of the character at the specified index. Example:
 
@@ -4508,7 +4409,7 @@ Strings in JavaScript are sequences of characters, such as letters, numbers, and
    console.log(str.charCodeAt(0)); // Output: 72 (Unicode value of "H")
    ```
 
-4. **indexOf()** and **lastIndexOf()**:
+3. **indexOf()** and **lastIndexOf()**:
    - `indexOf(substring)` returns the index of the first occurrence of the specified substring in the string, or -1 if the substring is not found.
    - `lastIndexOf(substring)` returns the index of the last occurrence of the specified substring in the string, or -1 if the substring is not found. Example:
 
@@ -4518,7 +4419,7 @@ Strings in JavaScript are sequences of characters, such as letters, numbers, and
    console.log(str.lastIndexOf("l")); // Output: 10
    ```
 
-5. **slice()**:
+4. **slice()**:
    The `slice(startIndex, endIndex)` method extracts a portion of a string starting from `startIndex` up to, but not including, `endIndex`. Example:
 
    ```javascript
@@ -4543,22 +4444,56 @@ In JavaScript, numbers are numeric values, such as integers or floating-point nu
 
 2. **toFixed()** and **toPrecision()**:
    - `toFixed(digits)` formats a number with a fixed number of decimal places specified by `digits`.
+
+    ```javascript
+    // Define a number
+    let number = 123.456;
+
+    // Format the number with 2 digits after the decimal point using toFixed
+    let formattedNumber = number.toFixed(2);
+
+    console.log("Formatted number:", formattedNumber);
+    ```
+
    - `toPrecision(precision)` formats a number with the specified precision (total number of digits).
 
-   ```javascript
-   let num = 123.456789;
-   console.log(num.toFixed(2)); // Output: "123.46"
-   console.log(num.toPrecision(4)); // Output: "123.5"
-   ```
+    ```javascript
+    // Define a number
+    let number = 123.456;
+
+    // Format the number with a precision of 5 using toPrecision
+    let formattedNumber = number.toPrecision(5);
+
+    console.log("Formatted number:", formattedNumber);
+    ```
+
 
 3. **parseInt()** and **parseFloat()**:
    - `parseInt(string, radix)` parses a string and returns an integer based on the specified radix (base).
+
+    ```javascript
+    // Define a string containing a number
+    let str = "123";
+
+    // Parse the string to an integer using parseInt
+    let parsedInt = parseInt(str);
+
+    console.log("Parsed integer:", parsedInt);
+    ```
+
    - `parseFloat(string)` parses a string and returns a floating-point number.
 
-   ```javascript
-   console.log(parseInt("10")); // Output: 10
-   console.log(parseFloat("3.14")); // Output: 3.14
-   ```
+    ```javascript
+    // Define a number
+    let number = 123.456;
+
+    // Format the number with a precision of 5 using toPrecision
+    let formattedNumber = number.toPrecision(5);
+
+    console.log("Formatted number:", formattedNumber);
+    ```
+
+
 
 4. **isNaN()** and **isFinite()**:
    - `isNaN(value)` checks if a value is NaN (Not a Number).
