@@ -1050,57 +1050,66 @@ In this example, the `switch` statement evaluates the value of the `day` variabl
 
 JavaScript provides several types of loops to iterate over data or execute code repeatedly. Here are the main types of loops:
 
-1. **For Loop**: Used when you know the number of iterations.
-   
-   ```javascript
-   for (let i = 0; i < 5; i++) {
-       console.log(i);
-   }
-   ```
+**1. For Loop**: 
 
-2. **While Loop**: Used when you don't know the number of iterations beforehand.
-   
-   ```javascript
-   let i = 0;
-      while (i < 5) {
-       console.log(i);
-       i++;
-   }
-   ```
+Used when you know the number of iterations.
 
-3. **Do...While Loop**: Similar to a `while` loop but always executes the code block at least once before checking the condition
+```javascript
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+```
 
-   ```javascript
-    let i = 0;
-    do {
-        console.log(i);
-        i++; 
-        }while (i < 5);
-   ```
+**2. While Loop**: 
 
-4. **For...In Loop**: Used to iterate over the properties of an object.
-   
-   ```javascript
-   const person = {
-       name: "John",
-       age: 30,
-       city: "New York"
-   };
+Used when you don't know the number of iterations beforehand
 
-   for (let key in person) {
-       console.log(key + ": " + person[key]);
-   }
-   ```
+```javascript
+let i = 0;
+   while (i < 5) {
+    console.log(i);
+    i++;
+}
+```
 
-5. **For...Of Loop**: Introduced in ES6, used to iterate over iterable objects like arrays or strings.
-   
-   ```javascript
-   const fruits = ["apple", "banana", "cherry"];
+**3. Do...While Loop**: 
 
-   for (let fruit of fruits) {
-       console.log(fruit);
-   }
-   ```
+Similar to a `while` loop but always executes the code block at least once before checking the condition
+
+```javascript
+ let i = 0;
+ do {
+     console.log(i);
+     i++; 
+     }while (i < 5);
+```
+
+**4. For...In Loop**: 
+
+Used to iterate over the properties of an object.
+
+```javascript
+const person = {
+    name: "John",
+    age: 30,
+    city: "New York"
+};
+for (let key in person) {
+    console.log(key + ": " + person[key]);
+}
+```
+
+**5. For...Of Loop**: 
+
+Introduced in ES6, used to iterate over iterable objects like arrays or strings.
+
+```javascript
+const fruits = ["apple", "banana", "cherry"];
+for (let fruit of fruits) {
+    console.log(fruit);
+}
+```
+
 Each type of loop has its use cases depending on the specific scenario you're dealing with. Experimenting with these loops will give you a good understanding of how to use them effectively in your code.
 
 ### JavaScript Function
