@@ -434,47 +434,47 @@ JavaScript operators are symbols used to perform operations on operands (variabl
 
 **1.Arithmetic Operators**:
 
-
 Arithmetic operators are symbols used to perform mathematical operations on numerical values. Here are the common arithmetic operators:
 
-- Addition: `+`
+* **Addition: `+`**
 
-Addition is one of the fundamental arithmetic operations, where two or more numbers are combined to find their sum. It's represented by the symbol "+". For instance, if you add 2 and 3 together, you get 5: \( 2 + 3 = 5 \). It's a simple but essential concept in mathematics and is used in various fields for calculations and problem-solving.
+  Addition is one of the fundamental arithmetic operations, where two or more numbers are combined to find their sum. It's represented by the symbol "+". For instance, if you add 2 and 3 together, you get 5: \( 2 + 3 = 5 \). It's a simple but essential concept in mathematics and is used in various fields for calculations and problem-solving.
 
-```javascript
-let num1 = 5;
-let num2 = 10;
+  ```javascript
+  let num1 = 5;
+  let num2 = 10;
+  
+  let sum = num1 + num2;
+  
+  console.log("The sum of", num1, "and", num2, "is", sum);
+  ```
 
-let sum = num1 + num2;
 
-console.log("The sum of", num1, "and", num2, "is", sum);
-```
+* **Subtraction: `-`**
 
-- Subtraction: `-`
+  Subtraction is another basic arithmetic operation, denoted by the symbol "-". It involves taking away one number from another to find the   difference between them. For example, subtracting 3 from 7 gives you 4: \( 7 - 3 = 4 \). Subtraction is commonly used for finding the   difference between quantities, determining changes over time, and many other applications in mathematics and everyday life.
+  
+  ```javascript
+  let num1 = 10;
+  let num2 = 5;
+  
+  let difference = num1 - num2;
+  
+  console.log("The difference between", num1, "and", num2, "is", difference);
+  ```
 
-Subtraction is another basic arithmetic operation, denoted by the symbol "-". It involves taking away one number from another to find the difference between them. For example, subtracting 3 from 7 gives you 4: \( 7 - 3 = 4 \). Subtraction is commonly used for finding the difference between quantities, determining changes over time, and many other applications in mathematics and everyday life.
+* **Multiplication: `*`**
 
-```javascript
-let num1 = 10;
-let num2 = 5;
+  Multiplication is an arithmetic operation used to find the result of repeated addition of two numbers. It's represented by the symbol "*", often read as "times" or "multiplied by". For example, multiplying 3 by 4 gives you 12: \(3 \times 4 = 12\). Multiplication is a fundamental operation in mathematics and has various applications in areas such as algebra, geometry, and physics. It's used for scaling, finding areas and volumes, and many other mathematical operations.
 
-let difference = num1 - num2;
-
-console.log("The difference between", num1, "and", num2, "is", difference);
-```
-
-- Multiplication: `*`
-
-Multiplication is an arithmetic operation used to find the result of repeated addition of two numbers. It's represented by the symbol "*", often read as "times" or "multiplied by". For example, multiplying 3 by 4 gives you 12: \(3 \times 4 = 12\). Multiplication is a fundamental operation in mathematics and has various applications in areas such as algebra, geometry, and physics. It's used for scaling, finding areas and volumes, and many other mathematical operations.
-
-```javascript
-let num1 = 10;
-let num2 = 5;
-
-let difference = num1 * num2;
-
-console.log("The difference between", num1, "and", num2, "is", difference);
-```
+  ```javascript
+  let num1 = 10;
+  let num2 = 5;
+  
+  let difference = num1 * num2;
+  
+  console.log("The difference between", num1, "and", num2, "is", difference);
+  ```
 
 - Division: `/`
 
