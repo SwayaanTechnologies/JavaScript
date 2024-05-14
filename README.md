@@ -175,11 +175,11 @@
 - [Reference](#reference)
 
 
-
-
-
-
 ## JavaScript Introduction
+
+1. [What is JavaScript](#what-is-javascript-?)
+2. [Features of JavaScript](#features-of-javascript)
+3. [History of JavaScript](#history-of-javascript)
 
 ### What is JavaScript ?
 
@@ -476,481 +476,483 @@ Arithmetic operators are symbols used to perform mathematical operations on nume
   console.log("The difference between", num1, "and", num2, "is", difference);
   ```
 
-- Division: `/`
+* **Division: `/`**
 
-Division is an arithmetic operation used to distribute a quantity into equal parts or to find out how many times one number is contained within another. It's represented by the symbol "÷" or "/", and it's read as "divided by". For example, dividing 10 by 2 gives you 5: \( \frac{10}{2} = 5 \). Division is the inverse operation of multiplication. It's essential for various mathematical tasks, such as finding averages, solving proportions, and determining rates of change.
+  Division is an arithmetic operation used to distribute a quantity into equal parts or to find out how many times one number is contained within another. It's    represented by the symbol "÷" or "/", and it's read as "divided by". For example, dividing 10 by 2 gives you 5: \( \frac{10}{2} = 5 \). Division is the inverse    operation of multiplication. It's essential for various mathematical tasks, such as finding averages, solving proportions, and determining rates of change.
+  
+  ```javascript
+  let num1 = 10;
+  let num2 = 5;
+  
+  let difference = num1 / num2;
+  
+  console.log("The difference between", num1, "and", num2, "is", difference);
+  ```
 
-```javascript
-let num1 = 10;
-let num2 = 5;
+- **Modulus (Remainder): `%`**
 
-let difference = num1 / num2;
+  The modulus operator, represented by the symbol "%", calculates the remainder of a division operation between two numbers. For example, if you divide 10 by 3, the   quotient is 3 with a remainder of 1. So, 10 % 3 equals 1. Modulus is commonly used in programming for tasks such as determining if a number is even or odd, cyclic   operations, and ensuring values stay within a certain range.
+  
+  ```javascript
+  let num1 = 10;
+  let num2 = 5;
+  
+  let difference = num1 % num2;
+  
+  console.log("The difference between", num1, "and", num2, "is", difference);
+  ```
 
-console.log("The difference between", num1, "and", num2, "is", difference);
-```
+* **Increment: `++`**
 
-- Modulus (Remainder): `%`
+  Increment refers to increasing a value by a certain amount, typically by one unit. In programming, an increment operation often involves adding 1 to the current value   of a variable. For example, if you have a variable `x` with an initial value of 5, incrementing `x` would result in its value becoming 6. This operation is commonly   represented by the "++" operator, such as `x++` in many programming languages. Incrementing variables is frequently used in loops, counters, and various algorithms to   track progress or manipulate data.
+  
+  ```javascript
+  let num = 5;
+  
+  // Incrementing the value of num by 1
+  num++;
+  
+  console.log("After incrementing, num is", num);
+  ```
 
-The modulus operator, represented by the symbol "%", calculates the remainder of a division operation between two numbers. For example, if you divide 10 by 3, the quotient is 3 with a remainder of 1. So, 10 % 3 equals 1. Modulus is commonly used in programming for tasks such as determining if a number is even or odd, cyclic operations, and ensuring values stay within a certain range.
+* **Decrement: `--`**
 
-```javascript
-let num1 = 10;
-let num2 = 5;
-
-let difference = num1 % num2;
-
-console.log("The difference between", num1, "and", num2, "is", difference);
-```
-
-- Increment: `++`
-
-Increment refers to increasing a value by a certain amount, typically by one unit. In programming, an increment operation often involves adding 1 to the current value of a variable. For example, if you have a variable `x` with an initial value of 5, incrementing `x` would result in its value becoming 6. This operation is commonly represented by the "++" operator, such as `x++` in many programming languages. Incrementing variables is frequently used in loops, counters, and various algorithms to track progress or manipulate data.
-
-```javascript
-let num = 5;
-
-// Incrementing the value of num by 1
-num++;
-
-console.log("After incrementing, num is", num);
-```
-
-- Decrement: `--`
-
-Decrement refers to decreasing a value by a certain amount, usually by one unit. In programming, a decrement operation often involves subtracting 1 from the current value of a variable. For example, if you have a variable `x` with an initial value of 5, decrementing `x` would result in its value becoming 4. This operation is typically represented by the "--" operator, such as `x--` in many programming languages. Decrementing variables is commonly used in loops, countdowns, and various algorithms where values need to be reduced iteratively.
-
-```javascript
-let num = 5;
-
-// Incrementing the value of num by 1
-num--;
-
-console.log("After incrementing, num is", num);
-```
+  Decrement refers to decreasing a value by a certain amount, usually by one unit. In programming, a decrement operation often involves subtracting 1 from the current   value of a variable. For example, if you have a variable `x` with an initial value of 5, decrementing `x` would result in its value becoming 4. This operation is   typically represented by the "--" operator, such as `x--` in many programming languages. Decrementing variables is commonly used in loops, countdowns, and various   algorithms where values need to be reduced iteratively.
+  
+  ```javascript
+  let num = 5;
+  
+  // Incrementing the value of num by 1
+  num--;
+  
+  console.log("After incrementing, num is", num);
+  ```
 
 
 **2.Assignment Operators**:
 
 Assignment operators are used in programming languages to assign values to variables. They combine the assignment operation "=" with another operation, such as addition, subtraction, multiplication, or division. This allows for concise expression of operations where the value of a variable is updated based on its current value and another value.
 
-- Assignment: `=`
+* **Assignment: `=`**
 
-The assignment operator, represented by "=", is used to assign a value to a variable. It takes the value on its right side and stores it in the variable on its left side.
+  The assignment operator, represented by "=", is used to assign a value to a variable. It takes the value on its right side and stores it in the variable on its left  side.
+  
+  ```javascript
+  let num1 = 5;
+  let num2;
+  
+  num2 = num1;
+  
+  console.log("num1:", num1);
+  console.log("num2:", num2);
+  ```
 
-```javascript
-let num1 = 5;
-let num2;
+* **Addition assignment: `+=`**
 
-num2 = num1;
+  The addition assignment operator, represented by +=, is used to add the value of the right operand to the value of the left operand and then assign the result to the   left operand. Essentially, it's a shorthand for performing addition and assignment in a single step.
+  
+  ```javascript
+  let num1 = 5;
+  let num2 = 10;
+  
+  num1 += num2;
+  
+  console.log("After addition assignment, num1 is", num1);
+  ```
 
-console.log("num1:", num1);
-console.log("num2:", num2);
-```
+* **Subtraction assignment: `-=`**
 
-- Addition assignment: `+=`
+  The subtraction assignment operator, represented by -=, is used to subtract the value of the right operand from the value of the left operand and then assign the   result to the left operand. Similar to addition assignment, it provides a shorthand for performing subtraction and assignment in a single step.
+  
+  ```javascript
+  let num1 = 5;
+  let num2 = 10;
+  
+  num1 -= num2;
+  
+  console.log("After addition assignment, num1 is", num1);
+  ```
 
-The addition assignment operator, represented by +=, is used to add the value of the right operand to the value of the left operand and then assign the result to the left operand. Essentially, it's a shorthand for performing addition and assignment in a single step.
+* **Multiplication assignment: `*=`**
 
-```javascript
-let num1 = 5;
-let num2 = 10;
+  The multiplication assignment operator, represented by *=, is used to multiply the value of the left operand by the value of the right operand and then assign the result to the left operand. It's a shorthand for performing multiplication and assignment in a single step.
 
-num1 += num2;
+  ```javascript
+  let num1 = 5;
+  let num2 = 10;
+  
+  num1 *= num2;
+  
+  console.log("After addition assignment, num1 is", num1);
+  ```
 
-console.log("After addition assignment, num1 is", num1);
-```
+* **Division assignment: `/=`**
 
-- Subtraction assignment: `-=`
+  The division assignment operator, represented by /=, is used to divide the value of the left operand by the value of the right operand and then assign the result to the left operand. It's a shorthand for performing division and assignment in a single step.
 
-The subtraction assignment operator, represented by -=, is used to subtract the value of the right operand from the value of the left operand and then assign the result to the left operand. Similar to addition assignment, it provides a shorthand for performing subtraction and assignment in a single step.
+  ```javascript
+  let num1 = 5;
+  let num2 = 10;
+  
+  num1 /= num2;
+  
+  console.log("After addition assignment, num1 is", num1);
+  ```
 
-```javascript
-let num1 = 5;
-let num2 = 10;
+* **Modulus assignment: `%=`**
 
-num1 -= num2;
-
-console.log("After addition assignment, num1 is", num1);
-```
-
-
-- Multiplication assignment: `*=`
-
-The multiplication assignment operator, represented by *=, is used to multiply the value of the left operand by the value of the right operand and then assign the result to the left operand. It's a shorthand for performing multiplication and assignment in a single step.
-
-```javascript
-let num1 = 5;
-let num2 = 10;
-
-num1 *= num2;
-
-console.log("After addition assignment, num1 is", num1);
-```
-
-- Division assignment: `/=`
-
-The division assignment operator, represented by /=, is used to divide the value of the left operand by the value of the right operand and then assign the result to the left operand. It's a shorthand for performing division and assignment in a single step.
-
-```javascript
-let num1 = 5;
-let num2 = 10;
-
-num1 /= num2;
-
-console.log("After addition assignment, num1 is", num1);
-```
-
-- Modulus assignment: `%=`
-
-The modulus assignment operator, represented by %=, is used to find the remainder when the value of the left operand is divided by the value of the right operand, and then assign the result to the left operand. It's a shorthand for performing modulus operation and assignment in a single step.
-
-```javascript
-let num1 = 5;
-let num2 = 10;
-
-num1 %= num2;
-
-console.log("After addition assignment, num1 is", num1);
-```
+  The modulus assignment operator, represented by %=, is used to find the remainder when the value of the left operand is divided by the value of the right operand, and   then assign the result to the left operand. It's a shorthand for performing modulus operation and assignment in a single step.
+  
+  ```javascript
+  let num1 = 5;
+  let num2 = 10;
+  
+  num1 %= num2;
+  
+  console.log("After addition assignment, num1 is", num1);
+  ```
 
 **3.Comparison Operators**:
 
 Comparison operators are used to compare two values and return a Boolean result (True or False) based on the comparison. Here are common comparison operators:
 
-- Equal to: `==` or `===` (strict equality)
+* **Equal to: `==` or `===` (strict equality)**
 
-The "equal to" operator, represented by "==", checks whether two values are equal. It's used to compare the values on both sides of the operator and returns True if they are equal, and False otherwise.
+  The "equal to" operator, represented by "==", checks whether two values are equal. It's used to compare the values on both sides of the operator and returns True if   they are equal, and False otherwise.
+  
+  ```javascript
+  let num1 = 5;
+  let num2 = 10;
+  
+  if (num1 == num2) {
+      console.log("num1 is equal to num2");
+  } else {
+      console.log("num1 is not equal to num2");
+  }
+  ```
 
-```javascript
-let num1 = 5;
-let num2 = 10;
+* **Not equal to: `!=` or `!==` (strict inequality)**
 
-if (num1 == num2) {
-    console.log("num1 is equal to num2");
-} else {
-    console.log("num1 is not equal to num2");
-}
-```
+  The "not equal to" operator, represented by "!=", checks whether two values are not equal. It returns True if the values on both sides of the operator are different   and False if they are equal
+  
+  ```javascript
+  let num1 = 5;
+  let num2 = 10;
+  
+  if (num1 !== num2) {
+      console.log("num1 is equal to num2");
+  } else {
+      console.log("num1 is not equal to num2");
+  }
+  ```
 
-- Not equal to: `!=` or `!==` (strict inequality)
+* **Greater than: `>`**
 
-The "not equal to" operator, represented by "!=", checks whether two values are not equal. It returns True if the values on both sides of the operator are different and False if they are equal
+  The "greater than" operator, represented by ">", compares two values and returns True if the value on the left side is greater than the value on the right side. If the   value on the left side is not greater, it returns False.
+  
+  ```javascript
+  let num1 = 10;
+  let num2 = 5;
+  
+  if (num1 > num2) {
+      console.log("num1 is greater than num2");
+  } else {
+      console.log("num1 is not greater to num2");
+  }
+  ```
 
-```javascript
-let num1 = 5;
-let num2 = 10;
+* **Less than: `<`**
 
-if (num1 !== num2) {
-    console.log("num1 is equal to num2");
-} else {
-    console.log("num1 is not equal to num2");
-}
-```
+  The "less than" operator, represented by "<", compares two values and returns True if the value on the left side is less than the value on the right side. If the value   on the left side is not less, it returns False.
+  
+  ```javascript
+  let num1 = 10;
+  let num2 = 5;
+  
+  if (num1 <> num2) {
+      console.log("num1 is greater than num2");
+  } else {
+      console.log("num1 is not greater to num2");
+  }
+  ```
 
-- Greater than: `>`
+* **Greater than or equal to: `>=`**
 
-The "greater than" operator, represented by ">", compares two values and returns True if the value on the left side is greater than the value on the right side. If the value on the left side is not greater, it returns False.
+  The "greater than or equal to" operator, represented by ">=", checks if the value on the left side is greater than or equal to the value on the right side. It returns   True if the left side value is greater than or equal to the right side value; otherwise, it returns False.
+  
+  ```javascript
+  let num1 = 5;
+  let num2 = 5;
+  
+  if (num1 >= num2) {
+      console.log("num1 is greater than or equal to num2");
+  } else {
+      console.log("num1 is less than num2");
+  }
+  ```
 
-```javascript
-let num1 = 10;
-let num2 = 5;
+* **Less than or equal to: `<=`**
 
-if (num1 > num2) {
-    console.log("num1 is greater than num2");
-} else {
-    console.log("num1 is not greater to num2");
-}
-```
-- Less than: `<`
-
-The "less than" operator, represented by "<", compares two values and returns True if the value on the left side is less than the value on the right side. If the value on the left side is not less, it returns False.
-
-```javascript
-let num1 = 10;
-let num2 = 5;
-
-if (num1 <> num2) {
-    console.log("num1 is greater than num2");
-} else {
-    console.log("num1 is not greater to num2");
-}
-```
-
-- Greater than or equal to: `>=`
-
-The "greater than or equal to" operator, represented by ">=", checks if the value on the left side is greater than or equal to the value on the right side. It returns True if the left side value is greater than or equal to the right side value; otherwise, it returns False.
-
-```javascript
-let num1 = 5;
-let num2 = 5;
-
-if (num1 >= num2) {
-    console.log("num1 is greater than or equal to num2");
-} else {
-    console.log("num1 is less than num2");
-}
-```
-- Less than or equal to: `<=`
-
-The "less than or equal to" operator, represented by "<=", checks if the value on the left side is less than or equal to the value on the right side. It returns True if the left side value is less than or equal to the right side value; otherwise, it returns False.
-
-```javascript
-let num1 = 5;
-let num2 = 10;
-
-if (num1 <>= num2) {
-    console.log("num1 is greater than or equal to num2");
-} else {
-    console.log("num1 is less than num2");
-}
-```
+  The "less than or equal to" operator, represented by "<=", checks if the value on the left side is less than or equal to the value on the right side. It returns True   if the left side value is less than or equal to the right side value; otherwise, it returns False.
+  
+  ```javascript
+  let num1 = 5;
+  let num2 = 10;
+  
+  if (num1 <>= num2) {
+      console.log("num1 is greater than or equal to num2");
+  } else {
+      console.log("num1 is less than num2");
+  }
+  ```
 
 **4.Logical Operators**:
 
 Logical operators are used to perform logical operations on Boolean values or expressions. Here are the common logical operators:
 
-- Logical AND: `&&`
+* **Logical AND: `&&`**
 
-The logical AND operator, represented by and, returns True if both of its operands are True. Otherwise, it returns False.
+  The logical AND operator, represented by and, returns True if both of its operands are True. Otherwise, it returns False.
+  
+  ```javascript
+  let num1 = 5;
+  let num2 = 10;
+  
+  if (num1 > 0 && num2 > 0) {
+      console.log("Both num1 and num2 are greater than 0");
+  } else {
+      console.log("At least one of num1 or num2 is not greater than 0");
+  }
+  ```
 
-```javascript
-let num1 = 5;
-let num2 = 10;
+* **Logical OR: `||`**
 
-if (num1 > 0 && num2 > 0) {
-    console.log("Both num1 and num2 are greater than 0");
-} else {
-    console.log("At least one of num1 or num2 is not greater than 0");
-}
-```
-- Logical OR: `||`
+  The logical OR operator, represented by or, returns True if at least one of its operands is True. It returns False only if both operands are False.
+  
+  ```javascript
+  let num1 = 5;
+  let num2 = 10;
+  
+  if (num1 > 0 || num2 > 0) {
+      console.log("At least one of num1 or num2 is greater than 0");
+  } else {
+      console.log("Neither num1 nor num2 is greater than 0");
+  }
+  ```
 
-The logical OR operator, represented by or, returns True if at least one of its operands is True. It returns False only if both operands are False.
+* **Logical NOT: `!`**
 
-```javascript
-let num1 = 5;
-let num2 = 10;
-
-if (num1 > 0 || num2 > 0) {
-    console.log("At least one of num1 or num2 is greater than 0");
-} else {
-    console.log("Neither num1 nor num2 is greater than 0");
-}
-```
-
-- Logical NOT: `!`
-
-The logical NOT operator, represented by not, negates the value of its operand. It returns True if the operand is False, and False if the operand is True.
-
-```javascript
-let isLoggedIn = true;
-
-if (!isLoggedIn) {
-    console.log("User is not logged in");
-} else {
-    console.log("User is logged in");
-}
-```
+  The logical NOT operator, represented by not, negates the value of its operand. It returns True if the operand is False, and False if the operand is True.
+  
+  ```javascript
+  let isLoggedIn = true;
+  
+  if (!isLoggedIn) {
+      console.log("User is not logged in");
+  } else {
+      console.log("User is logged in");
+  }
+  ```
 
 **5.Unary Operators**:
 
 Unary operators are operators that work with only one operand. They perform various operations such as negation, increment, and decrement on a single operand. Here are some common unary operators:
 
-- Unary plus: `+`
+* **Unary plus: `+`**
 
-The unary plus operator, represented by "+", doesn't change the sign of the operand. It's mainly included for symmetry with the unary minus operator ("-") and is rarely used since it doesn't have any effect on positive values.
+  The unary plus operator, represented by "+", doesn't change the sign of the operand. It's mainly included for symmetry with the unary minus operator ("*") and is   rarely used since it doesn't have any effect on positive values.
+  
+  ```Javascript
+  let strNum = "123";
+  let num = +strNum;
+  
+  console.log("String Number:", strNum);
+  console.log("Converted Number:", num);
+  ```
 
-```Javascript
-let strNum = "123";
-let num = +strNum;
+* **Unary minus: `-`**
 
-console.log("String Number:", strNum);
-console.log("Converted Number:", num);
-```
-- Unary minus: `-`
+  The unary minus operator, represented by "-", negates the value of its operand. It changes the sign of the operand to its opposite.
+  
+  ```JAVASCRIPT
+  let num = 10;
+  let negatedNum = -num;
+  
+  console.log("Original Number:", num);
+  console.log("Negated Number:", negatedNum);
+  ```
 
-The unary minus operator, represented by "-", negates the value of its operand. It changes the sign of the operand to its opposite.
+* **Logical NOT: `!`**
 
-```JAVASCRIPT
-let num = 10;
-let negatedNum = -num;
+  The logical NOT operator, represented by not, negates the boolean value of its operand. It returns True if the operand is False, and False if the operand is True.
+  
+  ```JAVASCRIPT
+  let isLoggedIn = false;
+  
+  if (!isLoggedIn) {
+      console.log("User is not logged in");
+  } else {
+      console.log("User is logged in");
+  }
+  ```
+* **Typeof: `typeof`**
 
-console.log("Original Number:", num);
-console.log("Negated Number:", negatedNum);
-```
+  In Python, the equivalent of the typeof operator in JavaScript is type(). The type() function returns the type of the specified object. Here's how it's used:
+  
+  ```javascript
+  let num = 5;
+  let str = "Hello";
+  let bool = true;
+  let arr = [1, 2, 3];
+  let obj = { key: "value" };
+  let func = function() {};
+  
+  console.log(typeof num);  // Output: "number"
+  console.log(typeof str);  // Output: "string"
+  console.log(typeof bool); // Output: "boolean"
+  console.log(typeof arr);  // Output: "object" (arrays are objects in JavaScript)
+  console.log(typeof obj);  // Output: "object"
+  console.log(typeof func); // Output: "function"
+  ```
 
-- Logical NOT: `!`
+* **Delete: `delete`**
 
-The logical NOT operator, represented by not, negates the boolean value of its operand. It returns True if the operand is False, and False if the operand is True.
-
-```JAVASCRIPT
-let isLoggedIn = false;
-
-if (!isLoggedIn) {
-    console.log("User is not logged in");
-} else {
-    console.log("User is logged in");
-}
-```
-- Typeof: `typeof`
-
-In Python, the equivalent of the typeof operator in JavaScript is type(). The type() function returns the type of the specified object. Here's how it's used:
-
-```javascript
-let num = 5;
-let str = "Hello";
-let bool = true;
-let arr = [1, 2, 3];
-let obj = { key: "value" };
-let func = function() {};
-
-console.log(typeof num);  // Output: "number"
-console.log(typeof str);  // Output: "string"
-console.log(typeof bool); // Output: "boolean"
-console.log(typeof arr);  // Output: "object" (arrays are objects in JavaScript)
-console.log(typeof obj);  // Output: "object"
-console.log(typeof func); // Output: "function"
-```
-
-- Delete: `delete`
-
-In JavaScript, the delete operator is used to delete properties from objects. It's important to note that it doesn't directly delete variables or identifiers.
-
-```javascript
-let obj = { a: 1, b: 2, c: 3 };
-
-console.log("Before delete:", obj); // Output: { a: 1, b: 2, c: 3 }
-
-delete obj.b;
-
-console.log("After delete:", obj); // Output: { a: 1, c: 3 }
-```
+  In JavaScript, the delete operator is used to delete properties from objects. It's important to note that it doesn't directly delete variables or identifiers.
+  
+  ```javascript
+  let obj = { a: 1, b: 2, c: 3 };
+  
+  console.log("Before delete:", obj); // Output: { a: 1, b: 2, c: 3 }
+  
+  delete obj.b;
+  
+  console.log("After delete:", obj); // Output: { a: 1, c: 3 }
+  ```
 
 **6.Conditional (Ternary) Operator**:
 
 In programming, the conditional operator, also known as the ternary operator, provides a concise way to write conditional statements. It's often used as a shortcut for the if...else statement when the conditions are simple.
 
-- `condition ? expression1 : expression2`
+* **`condition ? expression1 : expression2`**
 
-```javascript
-let num = 10;
-let result = num > 0 ? "Positive" : "Non-positive";
-
-console.log("Number is:", result);
-```
+  ```javascript
+  let num = 10;
+  let result = num > 0 ? "Positive" : "Non-positive";
+  
+  console.log("Number is:", result);
+  ```
 
 **7.Bitwise Operators** (operate on binary representations of numbers):
 
 Bitwise operators are operators that manipulate individual bits of binary numbers. They are commonly used in low-level programming for tasks such as data compression, encryption, and optimization. Here are some common bitwise operators:
 
-- Bitwise AND: `&`
+* **Bitwise AND: `&`**
 
+  The bitwise AND operator (&) in JavaScript performs a bitwise AND operation on each pair of corresponding bits of the operands. Here's a brief explanation and an   example:
+  
+  * Syntax: operand1 & operand2
+  * Explanation: The result of a bitwise AND operation is 1 if both bits at the same position are 1; otherwise, it's 0.
+  
+  ```Javascript
+  let num1 = 5;  // Binary: 101
+  let num2 = 3;  // Binary: 011
+  
+  let result = num1 & num2;  // Binary AND: 101 & 011 = 001 (Decimal: 1)
+  
+  console.log("Result:", result);  // Output: 1
+  ```
 
-The bitwise AND operator (&) in JavaScript performs a bitwise AND operation on each pair of corresponding bits of the operands. Here's a brief explanation and an example:
+* **Bitwise OR: `|`**
 
-* Syntax: operand1 & operand2
-* Explanation: The result of a bitwise AND operation is 1 if both bits at the same position are 1; otherwise, it's 0.
+  The bitwise OR operator (|) in JavaScript performs a bitwise OR operation on each pair of corresponding bits of the operands. Here's an explanation and an example:
+  
+  * Syntax: operand1 | operand2
+  * Explanation: The result of a bitwise OR operation is 1 if at least one of the bits at the same position is 1; otherwise, it's 0.
+  
+  ```javascript
+  let num1 = 5;  // Binary: 101
+  let num2 = 3;  // Binary: 011
+  
+  let result = num1 | num2;  // Binary AND: 101 & 011 = 001 (Decimal: 1)
+  
+  console.log("Result:", result);  // Output: 1
+  ```
 
-```Javascript
-let num1 = 5;  // Binary: 101
-let num2 = 3;  // Binary: 011
+* **Bitwise XOR: `^`**
 
-let result = num1 & num2;  // Binary AND: 101 & 011 = 001 (Decimal: 1)
+  The bitwise XOR operator (^) in JavaScript performs a bitwise XOR (exclusive OR) operation on each pair of corresponding bits of the operands. Here's an explanation   and an example:
+  
+  * Syntax: operand1 ^ operand2
+  * Explanation: The result of a bitwise XOR operation is 1 if the bits at the same position are different (one is 0 and the other is 1); otherwise, it's 0.
+  
+  ```javascript
+  let num1 = 5; // Binary: 0101
+  let num2 = 3; // Binary: 0011
+  
+  let result = num1 ^ num2; // Binary result: 0110 (Decimal: 6)
+  
+  console.log("Result of bitwise XOR:", result);
+  ```
 
-console.log("Result:", result);  // Output: 1
-```
+* **Bitwise NOT: `~`**
 
-- Bitwise OR: `|`
+  The bitwise NOT operator (~) in JavaScript performs a bitwise NOT operation on its operand, which is a unary operator (it operates on a single operand). Here's an   explanation and an example:
+  
+  * Syntax: ~operand
+  * Explanation: The result of a bitwise NOT operation is the complement of its operand. It flips each bit of the operand, changing 1s to 0s and 0s to 1s.
+  
+  ```javascript
+  let num = 5;
+  let bitwiseNotNum = ~num;
+  
+  console.log("Original Number:", num);
+  console.log("Bitwise NOT Result:", bitwiseNotNum);
+  ```
 
-The bitwise OR operator (|) in JavaScript performs a bitwise OR operation on each pair of corresponding bits of the operands. Here's an explanation and an example:
+* **Left shift: `<<`**
 
-* Syntax: operand1 | operand2
-* Explanation: The result of a bitwise OR operation is 1 if at least one of the bits at the same position is 1; otherwise, it's 0.
+  The left shift operator (<<) in JavaScript shifts the bits of a number to the left by a specified number of positions. Here's how it works and an example:
+  
+  * Syntax: operand << count
+  * Explanation: Shifting to the left means moving all bits towards the left by count positions. This effectively multiplies the number by 2 raised to the power of count.
+  
+  ```javaScript
+  let num = 5;
+  let shiftedNum = num << 2;
+  
+  console.log("Original Number:", num);
+  console.log("Shifted Number:", shiftedNum);
+  ```
 
-```javascript
-let num1 = 5;  // Binary: 101
-let num2 = 3;  // Binary: 011
+* **Right shift: `>>`**
 
-let result = num1 | num2;  // Binary AND: 101 & 011 = 001 (Decimal: 1)
+  The right shift operator (>>) in JavaScript shifts the bits of a number to the right by a specified number of positions. Here's how it works and an example:
+  
+  * Syntax: operand >> count
+  * Explanation: Shifting to the right means moving all bits towards the right by count positions. For positive numbers, this effectively divides the number by 2 raised   to the power of count, and for negative numbers, it depends on the implementation (sign*extension or zero*fill).
+  
+  ```javaScript
+  let num = 5;
+  let shiftedNum = num >> 2;
+  
+  console.log("Original Number:", num);
+  console.log("Shifted Number:", shiftedNum);
+  ```
 
-console.log("Result:", result);  // Output: 1
-```
+* **Unsigned right shift: `>>>`**
 
-- Bitwise XOR: `^`
-
-The bitwise XOR operator (^) in JavaScript performs a bitwise XOR (exclusive OR) operation on each pair of corresponding bits of the operands. Here's an explanation and an example:
-
-* Syntax: operand1 ^ operand2
-* Explanation: The result of a bitwise XOR operation is 1 if the bits at the same position are different (one is 0 and the other is 1); otherwise, it's 0.
-
-```javascript
-let num1 = 5; // Binary: 0101
-let num2 = 3; // Binary: 0011
-
-let result = num1 ^ num2; // Binary result: 0110 (Decimal: 6)
-
-console.log("Result of bitwise XOR:", result);
-```
-
-- Bitwise NOT: `~`
-
-The bitwise NOT operator (~) in JavaScript performs a bitwise NOT operation on its operand, which is a unary operator (it operates on a single operand). Here's an explanation and an example:
-
-* Syntax: ~operand
-* Explanation: The result of a bitwise NOT operation is the complement of its operand. It flips each bit of the operand, changing 1s to 0s and 0s to 1s.
-
-```javascript
-let num = 5;
-let bitwiseNotNum = ~num;
-
-console.log("Original Number:", num);
-console.log("Bitwise NOT Result:", bitwiseNotNum);
-```
-
-- Left shift: `<<`
-
-The left shift operator (<<) in JavaScript shifts the bits of a number to the left by a specified number of positions. Here's how it works and an example:
-
-* Syntax: operand << count
-* Explanation: Shifting to the left means moving all bits towards the left by count positions. This effectively multiplies the number by 2 raised to the power of count.
-
-```javaScript
-let num = 5;
-let shiftedNum = num << 2;
-
-console.log("Original Number:", num);
-console.log("Shifted Number:", shiftedNum);
-```
-
-- Right shift: `>>`
-
-The right shift operator (>>) in JavaScript shifts the bits of a number to the right by a specified number of positions. Here's how it works and an example:
-
-* Syntax: operand >> count
-* Explanation: Shifting to the right means moving all bits towards the right by count positions. For positive numbers, this effectively divides the number by 2 raised to the power of count, and for negative numbers, it depends on the implementation (sign-extension or zero-fill).
-
-```javaScript
-let num = 5;
-let shiftedNum = num >> 2;
-
-console.log("Original Number:", num);
-console.log("Shifted Number:", shiftedNum);
-```
-
-- Unsigned right shift: `>>>`
-
-The unsigned right shift operator (>>>) in JavaScript shifts the bits of a number to the right by a specified number of positions, filling the leftmost positions with zeros. Here's how it works and an example:
-
-* Syntax: operand >>> count
-* Explanation: Shifting to the right means moving all bits towards the right by count positions. Unlike the right shift operator (>>), the unsigned right shift operator fills the leftmost positions with zeros, regardless of the sign of the number.
-
-```javascript
-let num = -8; // Binary representation: 11111111111111111111111111111000 (32-bit signed integer)
-let shiftedNum = (num >>> 2) & 0x3fffffff; // Simulate unsigned right shift
-
-console.log("Original Number:", num);
-console.log("Unsigned Right Shift Result:", shiftedNum);
-```
+  The unsigned right shift operator (>>>) in JavaScript shifts the bits of a number to the right by a specified number of positions, filling the leftmost positions with   zeros. Here's how it works and an example:
+  
+  * Syntax: operand >>> count
+  * Explanation: Shifting to the right means moving all bits towards the right by count positions. Unlike the right shift operator (>>), the unsigned right shift   operator fills the leftmost positions with zeros, regardless of the sign of the number.
+  
+  ```javascript
+  let num = -8; // Binary representation: 11111111111111111111111111111000 (32-bit signed integer)
+  let shiftedNum = (num >>> 2) & 0x3fffffff; // Simulate unsigned right shift
+  
+  console.log("Original Number:", num);
+  console.log("Unsigned Right Shift Result:", shiftedNum);
+  ```
 
 Understanding and using these operators effectively is key to writing JavaScript code that performs calculations, makes decisions, and manipulates data efficiently.
 
