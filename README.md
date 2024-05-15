@@ -782,19 +782,6 @@ Unary operators are operators that work with only one operand. They perform vari
   console.log("Negated Number:", negatedNum);
   ```
 
-* **Logical NOT: `!`**
-
-  The logical NOT operator, represented by not, negates the boolean value of its operand. It returns True if the operand is False, and False if the operand is True.
-  
-  ```JAVASCRIPT
-  let isLoggedIn = false;
-  
-  if (!isLoggedIn) {
-      console.log("User is not logged in");
-  } else {
-      console.log("User is logged in");
-  }
-  ```
 * **Typeof: `typeof`**
 
   In Python, the equivalent of the typeof operator in JavaScript is type(). The type() function returns the type of the specified object. Here's how it's used:
@@ -975,10 +962,10 @@ if (number > 10) {
     console.log("The number is greater than 10.");
 }
 ```
-
+ 
 **You can also include an `else` statement to specify a block of code to execute if the condition is false:**
 
-```javascript
+```javascript 
 let number = 5;
 
 if (number > 10) {

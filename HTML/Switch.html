@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <label for="fruit">Select a fruit:</label>
+  <select id="fruit">
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+    <option value="orange">Orange</option>
+    <option value="grape">Grape</option>
+  </select>
+  <button onclick="getFruit()">Submit</button>
+  <p id="result"></p>
+  <script>
+    function getFruit() {
+      const selected = document.getElementById('fruit').value;
+      let message;
+
+      switch (selected) {
+        case 'apple':
+          message = 'You selected Apple.';
+          break;
+        case 'banana':
+          message = 'You selected Banana.';
+          break;
+        case 'orange':
+          message = 'You selected Orange.';
+          break;
+        case 'grape':
+          message = 'You selected Grape.';
+          break;
+        default:
+          message = 'Please select a fruit.';
+          break;
+      }
+      document.getElementById('result').textContent = message;
+    }
+  </script>
+</body>
+</html>
