@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Methods</title>
+</head>
+<body>
+    <p id="Object Methods"></p>
+    <script>
+    let calculator = {
+    add: function(a, b) {
+        return a + b;
+    },
+    subtract: function(a, b) {
+        return a - b;
+    },
+    multiply: function(a, b) {
+      return a * b;
+    },
+    divide: function(a, b) {
+      if (b !== 0) {
+        return a / b;
+      } else {
+        return "Error: Division by zero!";
+      }
+    }
+};
+document.getElementById("Object Methods").innerHTML = `Enter the Values : ${calculator.add(10, 5), calculator.multiply(10, 5)}`;
+
+    </script>
+</body>
+</html>

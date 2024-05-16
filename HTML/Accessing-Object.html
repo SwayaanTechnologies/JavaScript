@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessing Object</title>
+</head>
+<body>
+    <h1 id="Accessing"></h1>
+    <script>
+        let details = {
+                name : "Muralitharan Yoganath",
+                age : 22,
+                city : "Salem"
+            };
+            document.getElementById("Accessing").innerHTML = `Enter the details : ${details["age"]}`;
+            document.getElementById("Accessing").innerHTML = `Enter the details : "<font size = 5 color =green> ${details.name} </font>"`;
+    </script> 
+</body>
+</html>

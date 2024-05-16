@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nested Objects</title>
+</head>
+<body>
+    <p id="Nested Objects"></p>
+    <script>
+        let License = {
+            carname : "Toyota",
+            model : "Camry",
+            year : 2015,
+            owner: {
+                name : "Muralitharan Yoganath",
+                age : 22
+            }
+        };
+        document.getElementById("Nested Objects").innerHTML = `Enter the Details : ${License.year}`;
+    </script>
+</body>
+</html>
