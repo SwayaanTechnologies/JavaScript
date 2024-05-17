@@ -5009,9 +5009,20 @@ You have probably encountered and used closures frequently without being aware o
 It is common for a callback to reference a variable declared outside of itself. For example:
 
 ```javascript
-function getCarsByMake(make) {
-	return cars.filter(x => x.make === make);
+function fetchDataFromServer(callback) {
+    // Simulate fetching data (e.g., API request)
+    setTimeout(() => {
+        const data = { name: "John", age: 30 };
+        callback(data); // Execute the callback with the data
+    }, 1000); // Simulated delay of 1 second
 }
+
+function displayData(user) {
+    console.log(`Name: ${user.name}, Age: ${user.age}`);
+}
+
+// Usage: Fetch data and display it
+fetchDataFromServer(displayData);
 ```
 
 `make` is available in the callback because of lexical scoping, and the value of `make` is persisted when the anonymous function is called by `filter` because of a closure.
@@ -5245,10 +5256,18 @@ const personPrototype = {
 function Person(name) {
   this.name = name;
 }
-
+// Assign Method to the Prototype
 Object.assign(Person.prototype, personPrototype);
 // or
 // Person.prototype.greet = personPrototype.greet;
+
+// Create instances of Person 
+const alice = new Person(`Muralitharan`);
+const bob = new Person(`Yoganath`);
+
+//Call the greet Method
+alice.greet();
+bob.greet();
 ```
 
 **Here we create:**
@@ -5399,7 +5418,7 @@ Arrow functions are defined using the fat arrow (`=>`) notation.
 ```js
 // Arrow function
 let sumOfTwoNumbers = (a, b) => a + b;
-console.log(sum(10, 20)); // Output 30
+console.log(sumOfTwoNumbers(10, 20)); // Output 30
 ```
 
 It is evident that there is no "return" or "function" keyword in the arrow function declaration.
@@ -5418,6 +5437,7 @@ ES6 also provides Multi-line Strings. Users can create multi-line strings by usi
 let greeting = `Hello World,     
                 Greetings to all,
                 Keep Learning and Practicing!`
+console.log(greeting);
 ```
 
 ### Default Parameters
@@ -5425,17 +5445,25 @@ let greeting = `Hello World,
 In ES6, users can provide the default values right in the signature of the functions. But, in ES5, OR operator had to be used.
 
 ```js
-//ES6
-let calculateArea = function(height = 100, width = 50) {  
-    // logic
-}
+// ES6 (Arrow Function)
+const greet = (name = "Anonymous") => {
+    return "Hello, " + name;
+};
 
-//ES5
-var calculateArea = function(height, width) {  
-   height =  height || 50;
-   width = width || 80;
-   // logic
-}
+console.log(greet("John")); // Output: "Hello, John"
+console.log(greet()); // Output: "Hello, Anonymous"
+
+// ES5 (Function Expression)
+var getInfo = function(name, year, color) {
+    year = (typeof year !== 'undefined') ? year : 2018;
+    color = (typeof color !== 'undefined') ? color : 'Blue';
+    // Remainder of the function...
+};
+
+// Usage examples
+getInfo('Chevy', 1957, 'Green');
+getInfo('Benz', 1965); // Default for color is "Blue"
+getInfo('Honda'); // Defaults are 2018 and "Blue"
 ```
 
 ### Template Literals
@@ -5443,7 +5471,11 @@ var calculateArea = function(height, width) {
 ES6 introduces very simple string templates along with placeholders for the variables. The syntax for using the string template is ${PARAMETER} and is used inside of the back-ticked string.
 
 ```js
-let name = `My name is ${firstName} ${lastName}`
+let firstName = "Muralitharan";
+let lastName = "Yoganath";
+let name = `My name is ${firstName} ${lastName}`;
+
+console.log(name);
 ```
 
 ### Destructuring Assignment
@@ -5476,7 +5508,8 @@ function getMobile(manufacturer, model, year) {
       year
    }
 }
-getMobile("Samsung", "Galaxy", "2020");
+const mobileInfo = getMobile("Samsung", "Galaxy", "2020");
+console.log(mobileInfo);
 ```
 
 ### Promises
@@ -5518,13 +5551,14 @@ obj.getName(); // output: The Full-Name is John Smith
 Previously, there was no native support for modules in JavaScript. ES6 introduced a new feature called modules, in which each module is represented by a separate ".js" file. We can use the "import" or "export" statement in a module to import or export variables, functions, classes or any other component from/to different files and modules.
 
 ```js
-export var num = 50; 
-export function getName(fullName) {   
-   //data
-};
+// circle.js
+const { PI } = Math;
 
-import {num, getName} from 'module';
-console.log(num); // 50
+exports.area = (r) => PI * r ** 2;
+exports.circumference = (r) => 2 * PI * r;
+// foo.js
+const circle = require('./JS148-ES6-Modules.js');
+console.log(`The area of a circle of radius 4 is ${circle.area(4)}`);
 ```
 
 ## Asynchronous Programming
