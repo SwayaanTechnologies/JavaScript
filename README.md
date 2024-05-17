@@ -192,6 +192,44 @@
 
   - [React event handlers](#react-event-handlers)
 
+- [Objects and Prototypes](#objects-and-prototypes)
+
+  - [Prototype chain](#prototype-chain)
+
+  - [Shadowing properties](#shadowing-properties)
+
+  - [Setting a prototype](#setting-a-prototype)
+
+  - [Prototypes and inheritance](#prototypes-and-inheritance)
+
+- [ES6 Features](#es6-features)
+
+  - [let and const Keywords](#let-and-const-keywords)
+
+  - [Arrow Functions](#arrow-functions)
+
+  - [Multi-line Strings](#multi-line-strings)
+
+  - [Default Parameters](#default-parameters)
+
+  - [Template Literals](#template-literals)
+
+  - [Destructuring Assignment](#destructuring-assignment)
+
+  - [Enhanced Object Literals](#enhanced-object-literals)
+
+  - [Promises](#promises)
+
+  - [Classes](#classes)
+
+  - [Modules](#modules)
+
+- [Asynchronous Programming](#asynchronous-programming)
+
+  - [What is Synchronous Programming ?](#what-is-synchronous-programming-)
+
+  - [What is Asynchronous Programming ?](#what-is-asynchronous-programming-)
+
 - [Reference](#reference)
 
 
@@ -5054,14 +5092,713 @@ __Closures make it possible for:__
 
 Closures are important in other parts of React, such as props and hooks. Discussion about these topics is out of scope for this article. I recommend reading [this post](https://epicreact.dev/how-react-uses-closures-to-avoid-bugs/) from Kent C. Dodds or [this post](https://overreacted.io/making-setinterval-declarative-with-react-hooks/) from Dan Abramov to learn more about the role that closures play in React.
 
+## Objects and Prototypes
 
+Prototypes are the mechanism by which JavaScript objects inherit features from one another. In this article, we explain what a prototype is, how prototype chains work, and how a prototype for an object can be set.
+
+### Prototype chain
+
+**In the browser's console, try creating an object literal:**
+
+```javascript
+const myObject = {
+  city: "Madrid",
+  greet() {
+    console.log(`Greetings from ${this.city}`);
+  },
+};
+
+myObject.greet(); // Greetings from Madrid
+```
+
+This is an object with one data property, `city`, and one method, `greet()`. If you type the object's name followed by a period into the console, like `myObject.`, then the console will pop up a list of all the properties available to this object. You'll see that as well as `city` and `greet`, there are lots of other properties!
+
+```
+__defineGetter__
+__defineSetter__
+__lookupGetter__
+__lookupSetter__
+__proto__
+city
+constructor
+greet
+hasOwnProperty
+isPrototypeOf
+propertyIsEnumerable
+toLocaleString
+toString
+valueOf
+```
+__Try accessing one of them:__
+
+```javascript
+myObject.toString(); // "[object Object]"
+```
+It works (even if it's not obvious what `toString()` does).
+
+**What are these extra properties, and where do they come from?**
+
+Every object in JavaScript has a built-in property, which is called its prototype. The prototype is itself an object, so the prototype will have its own prototype, making what's called a prototype chain. The chain ends when we reach a prototype that has `null` for its own prototype.
+
+**Note**: The property of an object that points to its prototype is not called `prototype`. Its name is not standard, but in practice all browsers use `__proto__`. The standard way to access an object's prototype is the `Object.getPrototypeOf()` method.
+
+When you try to access a property of an object: if the property can't be found in the object itself, the prototype is searched for the property. If the property still can't be found, then the prototype's prototype is searched, and so on until either the property is found, or the end of the chain is reached, in which case `undefined` is returned.
+
+**So when we call `myObject.toString()`, the browser:**
+
+- looks for toString in myObject
+- can't find it there, so looks in the prototype object of `myObject` for `toString`
+- finds it there, and calls it.
+
+**What is the prototype for myObject? **
+
+To find out, we can use the function `Object.getPrototypeOf()`:
+
+```javascript
+Object.getPrototypeOf(myObject); // Object { }
+```
+This is an object called `Object.prototype`, and it is the most basic prototype, that all objects have by default. The prototype of `Object.prototype` is `null`, so it's at the end of the prototype chain:
+
+
+![Gif](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*hV2JxSvnzyXs6IBrmShYBw.gif)
+
+![images](./Images/myobject-prototype-chain.svg)
+
+**The prototype of an object is not always `Object.prototype`. Try this:**
+
+```javascript
+const myDate = new Date();
+let object = myDate;
+
+do {
+  object = Object.getPrototypeOf(object);
+  console.log(object);
+} while (object);
+
+// Date.prototype
+// Object { }
+// null
+```
+
+This code creates a `Date` object, then walks up the prototype chain, logging the prototypes. It shows us that the prototype of `myDate` is a `Date.prototype` object, and the prototype of that is `Object.prototype`.
+
+![images](./Images/mydate-prototype-chain.svg)
+
+In fact, when you call familiar methods, like `myDate2.getMonth()`, you are calling a method that's defined on `Date.prototype`.
+
+### Shadowing properties
+
+What happens if you define a property in an object, when a property with the same name is defined in the object's prototype? Let's see:
+
+```javascript
+const myDate = new Date(1995, 11, 17);
+
+console.log(myDate.getYear()); // 95
+
+myDate.getYear = function () {
+  console.log("something else!");
+};
+
+myDate.getYear(); // 'something else!'
+```
+
+This should be predictable, given the description of the prototype chain. When we call `getYear()` the browser first looks in `myDate` for a property with that name, and only checks the prototype if `myDate` does not define it. So when we add `getYear()` to `myDate`, then the version in `myDate` is called.
+
+This is called "shadowing" the property.
+
+### Setting a prototype
+
+There are various ways of setting an object's prototype in JavaScript, and here we'll describe two: `Object.create()` and constructors.
+
+**Using Object.create**
+
+The `Object.create()` method creates a new object and allows you to specify an object that will be used as the new object's prototype.
+
+**Here's an example:**
+
+```javascript
+const personPrototype = {
+  greet() {
+    console.log("hello!");
+  },
+};
+
+const carl = Object.create(personPrototype);
+carl.greet(); // hello!
+```
+
+Here we create an object `personPrototype`, which has a `greet()` method. We then use `Object.create()` to create a new object with `personPrototype` as its prototype. Now we can call `greet()` on the new object, and the prototype provides its implementation.
+
+**Using a constructor**
+
+In JavaScript, all functions have a property named `prototype`. When you call a function as a constructor, this property is set as the prototype of the newly constructed object (by convention, in the property named `__proto__`).
+
+So if we set the `prototype` of a constructor, we can ensure that all objects created with that constructor are given that prototype:
+
+```js
+const personPrototype = {
+  greet() {
+    console.log(`hello, my name is ${this.name}!`);
+  },
+};
+
+function Person(name) {
+  this.name = name;
+}
+
+Object.assign(Person.prototype, personPrototype);
+// or
+// Person.prototype.greet = personPrototype.greet;
+```
+
+**Here we create:**
+
+* an object `personPrototype`, which has a `greet()` method
+* a `Person()` constructor function which initializes the name of the person to create.
+
+We then put the methods defined in `personPrototype` onto the `Person` function's `prototype` property using [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign).
+
+After this code, objects created using `Person()` will get `Person.prototype` as their prototype, which automatically contains the `greet` method.
+
+```JS
+const reuben = new Person("Reuben");
+reuben.greet(); // hello, my name is Reuben!
+```
+
+This also explains why we said earlier that the prototype of `myDate` is called `Date.prototype`: it's the `prototype` property of the `Date` constructor.
+
+**Own properties**
+
+**The objects we create using the `Person` constructor above have two properties:**
+
+* a `name` property, which is set in the constructor, so it appears directly on `Person` objects
+
+* a `greet()` method, which is set in the prototype.
+
+It's common to see this pattern, in which methods are defined on the prototype, but data properties are defined in the constructor. That's because methods are usually the same for every object we create, while we often want each object to have its own value for its data properties (just as here where every person has a different name).
+
+Properties that are defined directly in the object, like `name` here, are called own properties, and you can check whether a property is an own property using the static [`Object.hasOwn()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwn) method:
+
+```JS
+const irma = new Person("Irma");
+
+console.log(Object.hasOwn(irma, "name")); // true
+console.log(Object.hasOwn(irma, "greet")); // false
+```
+
+**Note**: You can also use the non-static `Object.hasOwnProperty()` method here, but we recommend that you use `Object.hasOwn()` if you can.
+
+### Prototypes and inheritance
+
+Prototypes are a powerful and very flexible feature of JavaScript, making it possible to reuse code and combine objects.
+
+In particular they support a version of inheritance. Inheritance is a feature of object-oriented programming languages that lets programmers express the idea that some objects in a system are more specialized versions of other objects.
+
+For example, if we're modeling a school, we might have professors and students: they are both people, so have some features in common (for example, they both have names), but each might add extra features (for example, professors have a subject that they teach), or might implement the same feature in different ways. In an OOP system we might say that professors and students both inherit from people.
+
+You can see how in JavaScript, if `Professor` and `Student` objects can have `Person` prototypes, then they can inherit the common properties, while adding and redefining those properties which need to differ.
+
+In the next article we'll discuss inheritance along with the other main features of object-oriented programming languages, and see how JavaScript supports them.
+
+Prototypal inheritance in JavaScript allows objects to inherit properties and methods from other objects. Here's a simple example to illustrate this concept:
+
+**Example: Prototypal Inheritance**
+
+**1. Creating a Prototype Object**
+
+```javascript
+// Define a prototype object
+const personPrototype = {
+    greet: function() {
+        console.log(`Hello, my name is ${this.name}`);
+    }
+};
+```
+
+**2. Creating an Object that Inherits from the Prototype**
+
+```javascript
+// Create a new object that inherits from personPrototype
+const person1 = Object.create(personPrototype);
+person1.name = 'Alice';
+person1.greet(); // Output: Hello, my name is Alice
+```
+
+**3. Creating Another Object with Inheritance**
+
+```javascript
+const person2 = Object.create(personPrototype);
+person2.name = 'Bob';
+person2.greet(); // Output: Hello, my name is Bob
+```
+
+**Explanation**
+
+- **personPrototype**: This is an object that serves as a prototype. It has a method `greet` that logs a greeting message to the console.
+- **Object.create**: This method is used to create a new object with the specified prototype object. Both `person1` and `person2` inherit from `personPrototype`.
+- **Inheritance**: Both `person1` and `person2` have access to the `greet` method defined in `personPrototype`, even though `greet` is not directly defined on these objects.
+
+**More Complex Example: Constructor Function and Prototype**
+
+**1. Constructor Function**
+
+```javascript
+function Person(name) {
+    this.name = name;
+}
+
+Person.prototype.greet = function() {
+    console.log(`Hello, my name is ${this.name}`);
+};
+```
+
+**2. Creating Instances**
+
+```javascript
+const alice = new Person('Alice');
+const bob = new Person('Bob');
+
+alice.greet(); // Output: Hello, my name is Alice
+bob.greet();   // Output: Hello, my name is Bob
+```
+
+**Explanation**
+
+- **Person Constructor**: This function acts as a constructor for creating new `Person` objects. It assigns the `name` property to the new object.
+- **Person.prototype.greet**: This adds the `greet` method to the prototype of `Person`. All instances of `Person` will have access to this method.
+- **Creating Instances**: `new Person('Alice')` and `new Person('Bob')` create new instances of `Person`, each with its own `name` property but sharing the `greet` method defined on the prototype.
+
+Using prototypal inheritance, you can create a chain of objects that share methods and properties, which helps in efficient memory usage and provides a clear structure for object-oriented programming in JavaScript.
+
+## ES6 Features
+
+ES6 or the ECMAScript 2015 is the 6th and major edition of the ECMAScript language specification standard. It defines the standard for the implementation of JavaScript and it has become much more popular than the previous edition ES5.
+
+ES6 comes with significant changes to the JavaScript language. It brought several new features like, let and const keyword, rest and spread operators, template literals, classes, modules and many other enhancements to make JavaScript programming easier and more fun. In this article, we will discuss some of the best and most popular ES6 features that we can use in your everyday JavaScript coding.
+
+**ES6 Features**
+
+### let and const Keywords
+
+The keyword "let" enables the users to define variables and on the other hand, "const" enables the users to define constants. Variables were previously declared using "var" which had function scope and were hoisted to the top. It means that a variable can be used before declaration. But, the "let" variables and constants have block scope which is surrounded by curly-braces "{}" and cannot be used before declaration.
+
+```js
+let i = 10;
+console.log(i);   //Output 10
+
+const PI = 3.14;
+console.log(PI);  //Output 3.14
+```
+
+### Arrow Functions
+
+ES6 provides a feature known as Arrow Functions. It provides a more concise syntax for writing function expressions by removing the "function" and "return" keywords.
+
+Arrow functions are defined using the fat arrow (`=>`) notation.
+
+```js
+// Arrow function
+let sumOfTwoNumbers = (a, b) => a + b;
+console.log(sum(10, 20)); // Output 30
+```
+
+It is evident that there is no "return" or "function" keyword in the arrow function declaration.
+
+We can also skip the parenthesis in the case when there is exactly one parameter, but will always need to use it when you have zero or more than one parameter.
+
+But, if there are multiple expressions in the function body, then we need to wrap it with curly braces ("{}"). We also need to use the "return" statement to return the required value.
+
+### Multi-line Strings
+
+ES6 also provides Multi-line Strings. Users can create multi-line strings by using back-ticks(`).
+
+**It can be done as shown below :**
+
+```js
+let greeting = `Hello World,     
+                Greetings to all,
+                Keep Learning and Practicing!`
+```
+
+### Default Parameters
+
+In ES6, users can provide the default values right in the signature of the functions. But, in ES5, OR operator had to be used.
+
+```js
+//ES6
+let calculateArea = function(height = 100, width = 50) {  
+    // logic
+}
+
+//ES5
+var calculateArea = function(height, width) {  
+   height =  height || 50;
+   width = width || 80;
+   // logic
+}
+```
+
+### Template Literals
+
+ES6 introduces very simple string templates along with placeholders for the variables. The syntax for using the string template is ${PARAMETER} and is used inside of the back-ticked string.
+
+```js
+let name = `My name is ${firstName} ${lastName}`
+```
+
+### Destructuring Assignment
+
+Destructuring is one of the most popular features of ES6. The destructuring assignment is an expression that makes it easy to extract values from arrays, or properties from objects, into distinct variables.
+
+There are two types of destructuring assignment expressions, namely, Array Destructuring and Object Destructuring. It can be used in the following manner :
+
+```js
+//Array Destructuring
+let fruits = ["Apple", "Banana"];
+let [a, b] = fruits; // Array destructuring assignment
+console.log(a, b);
+
+//Object Destructuring
+let person = {name: "Peter", age: 28};
+let {name, age} = person; // Object destructuring assignment
+console.log(name, age);
+```
+
+### Enhanced Object Literals
+
+ES6 provides enhanced object literals which make it easy to quickly create objects with properties inside the curly braces.
+
+```js
+function getMobile(manufacturer, model, year) {
+   return {
+      manufacturer,
+      model,
+      year
+   }
+}
+getMobile("Samsung", "Galaxy", "2020");
+```
+
+### Promises
+
+In ES6, Promises are used for asynchronous execution. We can use promise with the arrow function as demonstrated below.
+
+```js
+var asyncCall =  new Promise((resolve, reject) => {
+   // do something
+   resolve();
+}).then(()=> {   
+   console.log('DON!');
+})
+```
+
+### Classes
+
+Previously, classes never existed in JavaScript. Classes are introduced in ES6 which looks similar to classes in other object-oriented languages, such as C++, Java, PHP, etc. But, they do not work exactly the same way. ES6 classes make it simpler to create objects, implement inheritance by using the "extends" keyword and also reuse the code efficiently.
+
+In ES6, we can declare a class using the new "class" keyword followed by the name of the class.
+
+```js
+class UserProfile {   
+   constructor(firstName, lastName) { 
+      this.firstName = firstName;
+      this.lastName = lastName;     
+   }  
+    
+   getName() {       
+     console.log(`The Full-Name is ${this.firstName} ${this.lastName}`);    
+   } 
+}
+let obj = new UserProfile('John', 'Smith');
+obj.getName(); // output: The Full-Name is John Smith
+```
+
+### Modules
+
+Previously, there was no native support for modules in JavaScript. ES6 introduced a new feature called modules, in which each module is represented by a separate ".js" file. We can use the "import" or "export" statement in a module to import or export variables, functions, classes or any other component from/to different files and modules.
+
+```js
+export var num = 50; 
+export function getName(fullName) {   
+   //data
+};
+
+import {num, getName} from 'module';
+console.log(num); // 50
+```
+
+## Asynchronous Programming
+
+To understand what asynchronous programming means, think about multiple people working on a project simultaneously, each on a different task.In traditional (synchronous) programming, each person would have to wait for the person before them to finish their task before starting their own.But with asynchronous programming, everyone can start and work on their tasks simultaneously without waiting for the others to finish.
+Similarly, in a computer program, asynchronous programming allows a program to work on multiple tasks simultaneously instead of completing one task before moving on to the next one. This can make the program get more things done in a shorter amount of time.
+
+For example, a program can send a request to a server while handling user input and processing data, all at the same time. This way, the program can run more efficiently.
+
+![images](./Images/image-321.png)
+
+In this article, we will delve into the world of asynchronous programming in JavaScript, exploring the different techniques and concepts that are used to achieve this powerful programming paradigm.
+
+From callbacks to promises and async/aawait, you will understand how to harness the power of asynchronous programming in your JavaScript projects.
+
+Understanding asynchronous programming is essential for building high-performance web applications, whether you're a seasoned developer or just getting started with JavaScript. So, read on to learn more about this vital concept.
+
+### What is Synchronous Programming ?
+
+Synchronous programming is a way for computers to do things one step at a time, in the order they are given the instructions.
+
+Imagine you're cooking dinner and have a list of tasks, like boiling water for pasta, frying chicken, and making a salad.
+
+You would do these tasks one at a time and wait for each one to finish before moving to the next.
+
+Synchronous programming works similarly, where the computer will complete one task before moving on to the next. This makes it easy to understand and predict what the computer will do at any given time.
+
+**Here's an example of synchronous code in JavaScript:**
+
+```js
+// Define three functions
+function firstTask() {
+  console.log("Task 1");
+}
+
+function secondTask() {
+  console.log("Task 2");
+}
+
+function thirdTask() {
+console.log("Task 3");  
+}
+
+// Execute the functions
+firstTask(); //output : Task 1
+secondTask();//output : Task 2
+thirdTask(); //output : Task 3
+```
+
+The code will execute the tasks in the order you see them and wait for each task to be completed before moving on to the next one.
+
+![images](./Images/image-244.png)
+
+However, synchronous programming can be problematic in certain situations, particularly when dealing with tasks that take a significant amount of time to complete.
+
+For example, let's say that a synchronous program performs a task that requires waiting for a response from a remote server. The program will be stuck waiting for the response and cannot do anything else until the response is returned. This is known as blocking, and it can lead to an application appearing unresponsive or "frozen" to the user.
+
+**Consider the following code:**
+
+```js
+function someLongRunningFunction() {
+    let start = Date.now();
+    while (Date.now() - start < 5000) {
+        // do nothing
+    }
+    return "Hello";
+}
+
+console.log('Starting...');
+
+let result = someLongRunningFunction();
+console.log(result);
+
+console.log('...Finishing');
+```
+
+**In this example:**
+
+* The program starts by logging "Starting..." to the console.
+* Then it calls the `someLongRunningFunction`, which simulates a long-running task that takes 5 seconds to complete. This function will block the execution of the rest of the program while it runs.
+* Once the function completes, it will return "Hello", and the program will log it on the console.
+* Finally, the program will log "Finishing" to the console.
+
+During the 5 seconds that `someLongRunningFunction()` is being executed, the program will be blocked, become unresponsive, and be unable to execute the next line of code. This can cause the program to take a long time to complete and make the application unresponsive to the user.
+
+However, if the program is executed asynchronously, it will continue to run the next line of code instructions rather than becoming blocked. This will enable the program to remain responsive and execute other code instructions while waiting for the timeout to complete.
+
+### What is Asynchronous Programming ?
+
+Asynchronous programming is a way for a computer program to handle multiple tasks simultaneously rather than executing them one after the other.
+
+![images](./Images/image-336.png)
+
+Asynchronous programming allows a program to continue working on other tasks while waiting for external events, such as network requests, to occur. This approach can greatly improve the performance and responsiveness of a program.
+
+For example, while a program retrieves data from a remote server, it can continue to execute other tasks such as responding to user inputs.
+
+**Here's an example of an asynchronous program using the `setTimeout` method:**
+
+```js
+console.log("Start of script");
+
+setTimeout(function() {
+  console.log("First timeout completed");
+}, 2000);
+
+console.log("End of script");
+```
+
+In this example, the `setTimeout` method executes a function after a specified time. The function passed to `setTimeout` will be executed asynchronously, which means that the program will continue to execute the next line of code without waiting for the timeout to complete.
+
+**When you run the code, the output will be:**
+```js
+Start of script
+End of script
+First timeout completed
+```
+
+As you can see, `console.log("First timeout completed")` will be executed after 2 seconds. Meanwhile, the script continues to execute the next code statement and doesn't cause any "blocking" or "freezing" behaviour.
+
+In JavaScript, asynchronous programming can be achieved through a variety of techniques. One of the most common methods is the use of callbacks.
+
+### Promises and Async/Await in Node.js
+
+###  Async function:
+
+An async function is a modification to the syntax used in writing promises. You can call it syntactic sugar over promises. It only makes writing promises easier.
+
+An async function returns a promise — if the function returns a value, the promise will be resolved with the value, but if the async function throws an error, the promise is rejected with that value. Let’s see an async function:
+
+```js
+async function myRide() {
+  return '2017 Dodge Charger';
+}
+```
+
+and a different function that does the same thing but in promise format:
+
+```js
+function yourRide() {
+  return Promise.resolve('2017 Dodge Charger');
+} 
+``` 
+ From the above statements, `myRide()` and `yourRide()` are equal and will both resolve to `2017 Dodge Charger`. Also when a promise is rejected, an async function is represented like this:
+
+ ```js
+ function foo() {
+  return Promise.reject(25)
+}
+// is equal to
+async function() {
+  throw 25;
+}
+```
+```js
+'use strict';
+alert("Starting")
+async function f() {
+alert("inside async")
+let promise = new Promise ((resolve, reject) => {
+setTimeout(() => resolve("done!"), 10000)
+}) ;
+alert("waiting for promise return")
+let result = await promise;
+// wait until the promise resolves (*)
+alert("Over")
+alert(result); // "done!"
+}
+alert("calling..")
+f();
+alert( "Ending")
+```
+The function execution “pauses” at the line `(*)` and resumes when the promise settles, with `result` becoming its result. So the code above shows “done!” in one second.
+
+Let’s emphasize: `await` literally makes JavaScript wait until the promise settles, and then go on with the result. That doesn’t cost any CPU resources, because the engine can do other jobs in the meantime: execute other scripts, handle events, etc.
+
+It’s just a more elegant syntax of getting the promise result than `promise.then`, easier to read and write.
+
+### Await 
+
+Await is only used with an async function. The await keyword is used in an async function to ensure that all promises returned in the async function are synchronized, ie. they wait for each other. Await eliminates the use of callbacks in `.then()` and `.catch()`. In using async and await, async is prepended when returning a promise, await is prepended when calling a promise. `try` and `catch` are also used to get the rejection value of an async function. Let's see this with our date example:
+
+```js
+async function myDate() {
+  try {
+let dateDetails = await date;
+    let message     = await orderUber(dateDetails);
+    console.log(message);
+} catch(error) {
+    console.log(error.message);
+  }
+}
+```
+
+**Lastly we call our async function:**
+
+```js
+(async () => { 
+  await myDate();
+})();
+```
+
+**Note we used the ES6 arrow function syntax here.**
+
+- **Async with promise**
+
+```js
+/**
+* @ Async -> ensures that the function returns a 'PRO
+MISE', and wraps non-promises in it.
+* $$ Await keyword -> makes JavaScript wait until tha
+t promise settles and returns its result.
+* $$ Await -> that works only inside async functions,
+*
+* Author: punitkumaryh
+*/
+// ^ Simple Async example showing function returns a 'P
+ROMISE'
+const asyncwork = async () => {
+// throw new Error("something went wrong.. ");
+return "pkmryh";
+};
+
+console. log(asyncWork());
+// output -› Promise ( 'pkmr' }
+
+// ^ Async with .then() and . catch()
+asyncWork()
+  .then ((result) => {
+    console. log ("Result-->",result);
+  })
+  .catch((error) => {
+  console. log("Error-->", error);
+  });
+```
+
+- **Async-Await chaining**
+
+```js
+const add = (a, b) => {
+  console.log('inside Async.')
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (a < 0 l| b< 0) {
+        return reject( 'Rejected:Number need to be positive')
+      }
+      resolve(a + b)
+    }, 5000)
+    console. log('some work, promise in background!')
+  })
+}
+const doAsync = async () => {
+const sum = await add (10, 10)
+console. log( 'takes extra 5sec')
+const sum2 = await add(sum, 10)
+return sum2
+}
+doAsync( )
+  .then ((result) => {
+    console.log('result:', result)
+  })
+  . catch((error) => {
+    console.log(error)
+  })
+```
 
 ## Reference
 
 **If to learn click this link button** 👇
 
-- [Reference](https://chat.openai.com/c/e656347c-8985-4b3c-b717-2033b18ab671)
+- [Reference link](https://chat.openai.com/c/e656347c-8985-4b3c-b717-2033b18ab671)
 
-- [Reference](https://chat.openai.com/c/e0c0fff2-c45f-4f0d-8646-093da16af632)
+- [Reference link](https://chat.openai.com/c/e0c0fff2-c45f-4f0d-8646-093da16af632)
 
-- [Reference](https://www.freecodecamp.org/news/scope-and-closures-in-javascript/)
+- [Reference link](https://www.freecodecamp.org/news/scope-and-closures-in-javascript/)
+
+- [Reference link](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes)
