@@ -153,7 +153,7 @@
     - [Functions](#functions)
 
     - [Functions with parameters](#functions-with-parameters)
-
+ 
     - [Functions with return](#functions-with-return)
 
 - [Loops](#loops)
@@ -229,6 +229,44 @@
   - [What is Synchronous Programming ?](#what-is-synchronous-programming-)
 
   - [What is Asynchronous Programming ?](#what-is-asynchronous-programming-)
+
+- [Errors](#errors)
+
+  - [Syntax error](#syntax-error)
+
+  - [Reference Error](#reference-error)
+
+  - [Type Error](#type-error)
+
+  - [Evaluation Error](#evaluation-error)
+
+  - [RangeError](#rangeerror)
+
+  - [URI Error](#uri-error)
+
+  - [Internal Error](#internal-error)
+
+- [Most Common Errors in JavaScript](#more-common-errors-in-javascript)
+  
+  - [DOM-related Errors](#dom-related-errors)
+
+  - [Syntax-based Errors](#syntax-based-errors)
+
+  - [Cross-browser Compatibility Issues](#cross-browser-compatibility-issues)
+
+  - [Not Using Undefined/Null Keywords Properly](#not-using-undefinednull-keywords-properly)
+
+  - [Undefined Methods](#undefined-methodsS)
+
+  - [Improper Usage of the Return Statement](#improper-usage-of-the-return-statement)
+
+- [How to Identify and Prevent Errors in JavaScript](#how-to-identify-and-prevent-errors-in-javascript)
+
+  - [Identifying Errors](#identifying-errors)
+
+  - [Preventing Errors](#Preventing-Errors)
+
+- [Best Practices for Handling Errors in JavaScript](#best-practices-for-handling-errors-in-javascript)
 
 - [Reference](#reference)
 
@@ -5564,6 +5602,7 @@ console.log(`The area of a circle of radius 4 is ${circle.area(4)}`);
 ## Asynchronous Programming
 
 To understand what asynchronous programming means, think about multiple people working on a project simultaneously, each on a different task.In traditional (synchronous) programming, each person would have to wait for the person before them to finish their task before starting their own.But with asynchronous programming, everyone can start and work on their tasks simultaneously without waiting for the others to finish.
+
 Similarly, in a computer program, asynchronous programming allows a program to work on multiple tasks simultaneously instead of completing one task before moving on to the next one. This can make the program get more things done in a shorter amount of time.
 
 For example, a program can send a request to a server while handling user input and processing data, all at the same time. This way, the program can run more efficiently.
@@ -5683,7 +5722,7 @@ In JavaScript, asynchronous programming can be achieved through a variety of tec
 
 ### Promises and Async/Await in Node.js
 
-###  Async function:
+####  Async function:
 
 An async function is a modification to the syntax used in writing promises. You can call it syntactic sugar over promises. It only makes writing promises easier.
 
@@ -5714,22 +5753,36 @@ async function() {
 }
 ```
 ```js
-'use strict';
-alert("Starting")
-async function f() {
-alert("inside async")
-let promise = new Promise ((resolve, reject) => {
-setTimeout(() => resolve("done!"), 10000)
-}) ;
-alert("waiting for promise return")
-let result = await promise;
-// wait until the promise resolves (*)
-alert("Over")
-alert(result); // "done!"
+// Define an async function
+async function fetchData() {
+  try {
+    // Simulate fetching data from an API or performing an asynchronous operation
+    const response = await fetch('https://api.example.com/data');
+    const data = await response.json();
+    
+    // Process the fetched data
+    console.log(data);
+    
+    // Return the processed data (or anything else you need)
+    return data;
+  } catch (error) {
+    // Handle errors
+    console.error('Error fetching data:', error);
+    throw error; // Rethrow the error to be handled by the caller if needed
+  }
 }
-alert("calling..")
-f();
-alert( "Ending")
+
+// Call the async function
+fetchData()
+  .then((data) => {
+    // Do something with the fetched data
+    console.log('Fetched data:', data);
+  })
+  .catch((error) => {
+    // Handle errors from the async function
+    console.error('Error in fetchData:', error);
+  });
+
 ```
 The function execution “pauses” at the line `(*)` and resumes when the promise settles, with `result` becoming its result. So the code above shows “done!” in one second.
 
@@ -5825,6 +5878,706 @@ doAsync( )
   })
 ```
 
+## Errors
+
+There are 7 types of JavaScript errors: 
+
+- Syntax error
+- Reference Error 
+- Type Error 
+- Evaluation Error 
+- RangeError 
+- URI Error 
+- Internal Error
+
+![image](./Images/types-of-errors-in-javascript-thumbnail.webp)
+
+### Syntax error
+
+A SyntaxError is a type of error that is thrown when there is a typo in the code, creating invalid code - code which cannot be interpreted by the compiler.
+
+**Catching a SyntaxError**
+
+```js
+try {
+  eval("hoo bar");
+} catch (e) {
+  console.log(e instanceof SyntaxError); // true
+  console.log(e.message);
+  console.log(e.name); // "SyntaxError"
+  console.log(e.stack); // Stack of the error
+}
+```
+
+**Creating a SyntaxError**
+
+```js
+try {
+  throw new SyntaxError("Hello");
+} catch (e) {
+  console.log(e instanceof SyntaxError); // true
+  console.log(e.message); // "Hello"
+  console.log(e.name); // "SyntaxError"
+  console.log(e.stack); // Stack of the error
+}
+```
+
+### Reference Error
+
+The ReferenceError object represents an error when a variable that doesn't exist (or hasn't yet been initialized) in the current scope is referenced.
+
+**Catching a ReferenceError**
+
+```js
+try {
+  eval("hoo bar");
+} catch (e) {
+  console.log(e instanceof SyntaxError); // true
+  console.log(e.message);
+  console.log(e.name); // "SyntaxError"
+  console.log(e.stack); // Stack of the error
+}
+```
+**Creating a ReferenceError**
+
+```js
+try {
+  throw new SyntaxError("Hello");
+} catch (e) {
+  console.log(e instanceof SyntaxError); // true
+  console.log(e.message); // "Hello"
+  console.log(e.name); // "SyntaxError"
+  console.log(e.stack); // Stack of the error
+}
+```
+
+### Type Error
+
+The TypeError object represents an error when an operation could not be performed, typically (but not exclusively) when a value is not of the expected type
+
+The JavaScript exception "x is (not) y" occurs when there was an unexpected type. Oftentimes, unexpected undefined or null values.
+
+```js
+let a = 1
+console.log(a()) 
+
+//output
+Uncaught TypeError: a is not a function
+```
+
+```js
+let a = 1
+console.log(a)
+
+//output
+1
+```
+
+### Evaluation Error
+
+The EvalError object indicates an error regarding the global eval() function. This exception is not thrown by JavaScript anymore, however the EvalError object remains for compatibility. EvalError is a serializable object, so it can be cloned with structuredClone() or copied between Workers using postMessage().
+
+The `EvalError` object indicates an error regarding the global `eval()` function. This exception is not thrown by JavaScript anymore, however the EvalError object remains for compatibility.
+
+**Creating an EvalError**
+
+```js
+try {
+  throw new EvalError("Hello");
+} catch (e) {
+  console.log(e instanceof EvalError); // true
+  console.log(e.message); // "Hello"
+  console.log(e.name); // "EvalError"
+  console.log(e.stack); // Stack of the error
+}
+```
+### RangeError
+
+A RangeError is thrown when trying to pass a value as an argument to a function that does not allow a range that includes the value. This can be encountered when: passing a value that is not one of the allowed string values to String.
+
+**Using RangeError (for numeric values)**
+
+```js
+function check(n) {
+  if (!(n >= -500 && n <= 500)) {
+    throw new RangeError("The argument must be between -500 and 500.");
+  }
+}
+
+try {
+  check(2000);
+} catch (error) {
+  if (error instanceof RangeError) {
+    console.log("Error caught: " + error.message);
+    // Handle the error
+  }
+}
+```
+
+**Using RangeError (for non-numeric values)**
+
+```js
+function check(value) {
+  if (!["apple", "banana", "carrot"].includes(value)) {
+    throw new RangeError(
+      'The argument must be an "apple", "banana", or "carrot".',
+    );
+  }
+}
+
+try {
+  check("cabbage");
+} catch (error) {
+  if (error instanceof RangeError) {
+    console.log("Error caught: " + error.message);
+  }
+}
+
+```
+
+### URI Error 
+
+An instance of the URIError class is thrown by decodeURI() and decodeURIComponent() if the specified string contains illegal hexadecimal escapes. It can also be thrown by encodeURI() and encodeURIComponent() if the specified string contains illegal Unicode surrogate pairs.
+
+
+URI errors in JavaScript typically occur when there are issues with encoding or decoding Uniform Resource Identifiers (URIs). These errors can manifest in various scenarios, such as incorrect usage of URI-related functions or improper handling of special characters within URIs.
+
+```js
+// Define a function named decode_URI_String that takes a parameter uriString
+function decode_URI_String(uriString) {
+  // Attempt to decode the URI string
+  try {
+    // Decode the URI string
+    const decodedURI = decodeURI(uriString);
+    // Log the decoded URI to the console
+    console.log('Decoded URI:', decodedURI);
+  } catch (error) {
+    // If an error occurs during execution
+    // Check if the error is a URIError
+    if (error instanceof URIError) {
+      // If the error is a URIError, log the error message with 'URIError' prefix
+      console.log('URIError:', error.message);
+    } else {
+      // If the error is not a URIError, log the error message with 'Error' prefix
+      console.log('Error:', error.message);
+    }
+  }
+}
+
+// Example:
+// Call the decode_URI_String function with a valid URI string
+decode_URI_String('https://example.com/'); // Valid URI
+// Call the decode_URI_String function with an invalid URI string containing special characters
+decode_URI_String('https://example.com/%%invalidURI'); // Invalid URI
+```
+
+### Internal Error
+
+If you're encountering an "Internal Error" in your JavaScript code, it might be due to some issue with the code logic or environment setup. The provided code snippet should work correctly for throwing and catching a RangeError. However, if you're facing an error, it might be helpful to debug it further.
+
+```js
+function check(n) {
+  if (!(n >= -500 && n <= 500)) {
+    throw new RangeError("The argument must be between -500 and 500.");
+  }
+}
+
+try {
+  check(2000);
+} catch (error) {
+  if (error instanceof RangeError) {
+    console.log("Error caught: " + error.message);
+    // Handle the error
+  } else {
+    console.log("An unexpected error occurred: " + error.message);
+  }
+}
+```
+
+### Creating Custom Error Types
+
+We make use of the OOPS concept called an inheritance to implement custom errors. All the types of standard errors like RangeError, TypeError, etc inherit a main class called Error, which looks as follows: 
+
+where:
+
+* **msg** : The error message.
+* **filename** : The file where the error occurs.
+* **lineno** : line number of the error.
+
+The Error class consists of properties like name, message, filename, and methods like captureStackTrace, and toString. But again it is different in different browsers.
+
+You can use this error class to construct your own error object prototype which is called as custom error.
+
+Custom errors can be constructed in two ways, which are:
+
+* Class constructor extending error class.
+* Function constructor inheriting error class.
+
+Class constructor extending error class: Here we define a class that extends the error class,
+
+**Syntax**:
+
+```js
+class  CustomErrorName extends Error{
+    constructor ( ){
+        super( )
+    }
+    ...
+}
+```
+**Example 1** 
+
+We will create an error for a condition 10 != 20 in the below code.
+
+```js
+class CheckCondition extends Error { 
+    constructor(msg) { 
+        super(msg); 
+    } 
+} 
+  
+try { 
+    if (10 != 20)  
+        throw new CheckCondition("10 is not equal to 20"); 
+} 
+catch (err) { 
+    console.error(err); 
+}
+```
+
+Output 
+
+![images](./Images/Screenshot20220810162437-660x139.png)
+
+Function constructor inheriting error class:
+Here the function inherits the prototype of the error class. we can then create other custom properties and methods to handle the application-specific error.
+
+**Syntax**:
+
+```js
+function CustomErrorName(msg = "") {
+    this.message = msg;
+    this.name = "CustomErrorName";
+}
+CustomErrorName.prototype = Error.prototype;
+```
+
+**Example 2**
+
+In this example, we will create a custom error that throws for the condition 10 != 20.
+
+```Javascript
+function CheckCondition(msg = "") { 
+    this.msg = msg; 
+    this.name = "CheckCondition"; 
+} 
+CheckCondition.prototype = Error.prototype; 
+  
+try { 
+    if (10 != 20)  
+        throw new CheckCondition("10 is not equal to 20"); 
+} 
+catch (err) { 
+    console.error(err); 
+}
+```
+
+Output
+
+![images](./Images/Screenshot20220810163849.png)
+
+## More Common Errors in JavaScript
+
+### DOM-related Errors
+
+DOM is also known as Document Object Model. It’s one of the crucial elements of a JavaScript-based website interface. Because it handles most of the website’s content, structure, and style, DOM-related errors are responsible for 68% of the top 10 JavaScript errors. So it clearly shows that developers who work with DOM come across various errors and faults during [web application testing.](https://www.browserstack.com/guide/web-application-testing)
+
+However, DOM is a core part of the JavaScript programming language which handles the interface part to make the HTML-based website more friendly, interactive, and responsive. In other words, DOM is the reason why JavaScript language was released. 
+
+**Here’s one of the common errors while using a DOM element:**
+
+```html
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+    <script>        
+
+document.getElementById("container").innerHTML = "Common JS Bugs and Errors";
+
+    </script>
+
+    <div id="container"></div>
+
+    </body>
+
+</html>
+```
+
+If the above code runs on the Chrome browser, it will display an error on the developer console. This error comes because the Chrome browser isn’t aware of the div element while the code runs.
+
+To resolve this error, the easiest method is to place the div id=”container”>div just before the starting the script tag.
+
+**Here’s what it looks like after implementing the line:**
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+     <div id="container"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>        
+
+    document.getElementById("container").innerHTML = "Common JS Bugs and Errors";
+
+    </script>    
+</body>
+</html>
+```
+
+### Syntax-based Errors
+
+When a developer works on a web application based on JavaScript, it’s common to have a syntax error due to an incorrect line of code like missing parentheses, unmatched brackets, or some other syntax fault. And it’s common knowledge that if the code is not written according to the standard JavaScript syntax, it will show errors. 
+
+According to reports, these syntax errors contribute to 12% of JavaScript errors. So these errors are not easily avoided because it plays a major role, and developers must focus on these errors and write as per standard syntax.
+
+**Here’s an example of a syntax errors:**
+
+When a code seems like this:
+
+```js
+if((x > y) && (y < 77) {
+
+        //more code here
+
+   }
+```
+
+**In the first line of code, the last parenthesis of the conditional statement is missing.**
+
+Let’s correct the syntax!
+
+```js
+if ((x > y) && (y < 77)) {
+
+        //more code here
+
+    }
+```
+
+Now, the code can run smoothly without showing any syntax error. 
+
+So, developers must understand the standard syntax to follow while working on JavaScript-based web applications.
+
+### Cross-browser Compatibility Issues
+
+In today’s world, websites require a modern interface, fast response, and interactive elements, and JavaScript plays a major role in building these. But one more essential thing about the website is that it must be compatible with different browsers. 
+
+Cross-browser compatibility is one of the major issues of JavaScript (JS). Whenever developers work on a website or web application, they may encounter cross-browser compatibility issues.
+
+**Here are some common cross-browser compatibility errors in JavaScript are:**
+
+* **Modern JavaScript features on Older Browsers**: One of the common errors in cross-browser compatibility is when developers build modern websites or web applications based on modern JavaScript features that are not supported on older browsers or their older versions. 
+
+* **Browser Sniffing**: It’s also known as Browser Detection. It’s a technique used in websites & web applications to identify the browser a visitor uses so that developers can run the relevant code to make the site compatible with that particular browser. 
+
+* **Using Libraries**: While developing the website and web applications, some native & third-party libraries are not supported on different browsers & their versions. 
+Solution for the cross-browser compatibility issues!
+
+BrowserStack Live is a one-stop cloud-based cross-browser compatibility testing platform that provides a complete testing environment to the testers and gives access to 3,000+ real devices and browsers with different versions. Testers can test JavaScript-based websites and web applications on different browsers and identify bugs or JavaScript compatibility issues to resolve them.
+
+### Not Using Undefined/Null Keywords Properly
+
+Undefined and null keywords contribute to 5% of all JavaScript bugs/errors. The reason is that many developers don’t know how to use these undefined and null keywords while building websites and web applications. So it’s important for developers to know both keywords and use while developing a JavaScript-based website or web application. 
+
+**Null Keyword**: The null keyword is an assignment value that usually denotes a non-existent value. It’s also a JavaScript object. 
+
+**For example:**
+
+```js
+var codeJS = null;
+
+console.log(codeJS);
+      //output is null
+
+console.log(typeof codeJS);
+     //output is object
+```
+
+**Undefined Keyword**: The undefined keyword indicates any variable or property already declared as an assigned value. 
+
+**For example:**
+
+```js
+var codeJS;
+
+console.log(codeJS);
+      //output is undefined
+
+console.log(typeof codeJS);
+     //output is undefined
+```
+
+However, developers should understand the usage of null and undefined keywords to prevent bugs/errors in JavaScript programs.
+
+### Undefined Methods
+
+Another common error that contributes to 4% of all JavaScript errors is undefined methods. In this error, when developers use JavaScript to build websites and web applications, it shows errors when making a call to a method without giving its previous definition.
+
+**Let’s understand with an example:**
+
+```js
+var coder = {
+
+      name: "Peter",
+
+      age: 27,
+
+      speak() {
+
+      console.log(this.name);
+
+  }
+
+};
+
+coder.speakNow();
+```
+
+When this code runs on the Chrome browser, its developer console shows an error. It shows an error because the called function, i.e., SpeakNow(), has not been defined in the JavaScript code. 
+
+
+### Improper Usage of the Return Statement
+
+Sometimes, when developers use JavaScript to build any program, it shows an incorrect return statement, and it’s considered an error contributing to 2% of all JavaScript errors. 
+
+In JavaScript, the return statement stops the running functions from getting the output. But if the return statement is used incorrectly, it heavily impacts web application performance. 
+
+However, when developers break the return statement, it shows an undefined error. 
+
+**For example:**
+
+```js
+function number(n) {
+
+    var add = 5;
+
+    return;
+
+    n + add;
+
+     }
+console.log(number(10));
+```
+
+When the above code runs on the Chrome browser, it shows an undefined error in the Chrome developer console. Its solution is that developers should stop breaking return statements in the JavaScript code. 
+
+Identifying and preventing errors in JavaScript is crucial for developing robust and reliable applications. Here are some strategies and tools that can help:
+
+## How to Identify and Prevent Errors in JavaScript
+
+### Identifying Errors
+
+**1. Console Logging:**
+
+- Use `console.log()`, `console.error()`, and `console.warn()` to output information to the console. This helps track variable values and execution flow.
+
+  ```javascript
+  console.log('This is a log message');
+  console.error('This is an error message');
+  console.warn('This is a warning message');
+  ```
+
+**2. Debugging Tools:**
+
+- Modern browsers come with built-in developer tools that include a debugger. You can set breakpoints, inspect variables, and step through code.
+
+- Open developer tools in Chrome (F12 or Ctrl+Shift+I), then go to the "Sources" tab to start debugging.
+
+**3. Error Handling with Try-Catch:**
+
+   - Use `try-catch` blocks to catch and handle errors gracefully.
+
+  ```javascript
+  try {
+      // Code that may throw an error
+      let result = someFunction();
+  } catch (error) {
+      console.error('An error occurred:', error);
+  }
+  ```
+
+**4. Linting Tools:**
+
+   - Use linting tools like ESLint to catch syntax and logic errors before running your code. Configure ESLint in your project to enforce coding standards and detect potential issues.
+
+  ```bash
+  npm install eslint --save-dev
+  npx eslint --init
+  ```
+
+**5. Unit Testing:**
+
+   - Implement unit tests using frameworks like Jest, Mocha, or Jasmine. Tests help ensure your code works as expected and identify issues early.
+
+  ```bash
+  npm install jest --save-dev
+  ```
+
+### Preventing Errors
+
+**1. Strict Mode:**
+
+   - Use `"use strict";` at the beginning of your scripts or functions to enforce stricter parsing and error handling in your JavaScript code.
+
+  ```javascript
+  "use strict";
+  function myFunction() {
+      // Code here
+  }
+  ```
+
+**2. Type Checking:**
+
+   - Use TypeScript or Flow to add static type checking to your JavaScript code. Types help prevent many common errors by catching them at compile time.
+
+  ```typescript
+  let myNumber: number = 5;
+  ```
+
+**3. Avoid Global Variables:**
+
+   - Minimize the use of global variables as they can lead to unexpected behaviors and hard-to-track errors. Use closures or modules to encapsulate code.
+  
+  ```javascript
+  (function() {
+      var localVar = 'I am local';
+  })();
+  ```
+
+**4. Consistent Code Style:**
+
+   - Maintain a consistent coding style using tools like Prettier. Consistent code is easier to read, understand, and less prone to errors.
+
+  ```bash
+  npm install prettier --save-dev
+  ```
+
+**5. Use Promises and Async/Await:**
+
+   - Handle asynchronous code using Promises or `async/await` to avoid callback hell and make your code more readable.
+
+  ```javascript
+  async function fetchData() {
+      try {
+          let response = await fetch('https://api.example.com/data');
+          let data = await response.json();
+          console.log(data);
+      } catch (error) {
+          console.error('Fetch error:', error);
+      }
+  }
+  ```
+
+**6. Validate Inputs:**
+
+   - Always validate inputs to functions and APIs to prevent unexpected behavior and security vulnerabilities.
+
+  ```javascript
+  function validateInput(input) {
+      if (typeof input !== 'string') {
+          throw new Error('Invalid input: expected a string');
+      }
+      // Further validation
+  }
+  ```
+
+By combining these practices and tools, you can significantly reduce the number of errors in your JavaScript code and make your applications more robust and reliable.
+
+## Best Practices for Handling Errors in JavaScript
+
+Error handling is a crucial aspect of programming, and JavaScript is no exception. Proper error handling not only helps prevent crashes and unexpected behavior in your application but also improves its overall reliability and maintainability. In this blog post, we’ll explore some tips and best practices for efficient error handling in JavaScript, along with examples to illustrate each point.
+
+**1. Use try-catch-finally blocks**
+
+The try-catch-finally statement is a fundamental error handling mechanism in JavaScript. Encapsulating your code within a try block allows you to catch any errors that may occur during its execution. Here’s an example:
+
+```JS
+try {
+  // Your code here
+} catch (error) {
+  console.error("An error occurred:", error);
+} finally {
+  console.log("Finished executing the code.");
+}
+```
+
+**2. Throw custom errors**
+
+JavaScript has built-in error types, but creating custom error types can make your error handling more specific and informative. Here’s an example of how to create a custom error:
+
+```JS
+class CustomError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "CustomError";
+  }
+}
+
+try {
+  throw new CustomError("This is a custom error");
+} catch (error) {
+  console.error(error.name + ": " + error.message);
+}
+```
+
+**3. Use async-await with try-catch**
+
+When working with asynchronous code, using async-await can simplify error handling. Make sure to wrap your async code within a try-catch block to handle errors gracefully:
+
+```JS
+async function fetchData(url) {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+fetchData("https://api.example.com/data");
+```
+
+**4. rejections**
+
+Promises are another way to manage asynchronous code in JavaScript. Be sure to handle promise rejections using catch() or by passing a rejection handler to then(). Failing to handle promise rejections can result in unhandled promise rejections, which can cause issues in your application.
+
+```JS
+fetch("https://api.example.com/data")
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error fetching data:", error));
+```
+
+**5. Use global error handlers**
+
+Sometimes, it’s useful to have a global error handler to catch unhandled errors. You can set up a global error handler using window.onerror for synchronous code or `window.addEventListener('unhandledrejection', ...)` for promise rejections.
+
+```JS
+window.onerror = (message, source, lineno, colno, error) => {
+  console.error("Unhandled error:", error);
+};
+
+window.addEventListener("unhandledrejection", event => {
+  console.error("Unhandled promise rejection:", event.reason);
+});
+```
+
 ## Reference
 
 **If to learn click this link button** 👇
@@ -5835,4 +6588,4 @@ doAsync( )
 
 - [Reference link](https://www.freecodecamp.org/news/scope-and-closures-in-javascript/)
 
-- [Reference link](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes)
+- [Reference link](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes) 
