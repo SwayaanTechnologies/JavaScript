@@ -374,7 +374,7 @@ Comments are ignored by the JavaScript engine when it executes your code, so the
 
 In JavaScript, variables are used to store data values. Here are the basics of working with variables:
 
-**1.Declaring Variables**: Use `let`, `const`, or `var` to declare variables.
+**1.Declaring Variables**: Use `let`, `const`, or `va  r` to declare variables.
 
 ```javascript
 let x = 5; // Declaring a variable using let
@@ -393,7 +393,7 @@ Examples: `myVariable`, `name_123`, `$price`.
 let firstName = "Muralitharan";
 let userAge = 30;
 let isLoggedIn = true;
-let favoriteFruits = ["apple", "banana", "orange"];
+let favoriteFruits = ["apple", "banana", "orange"];  
 let personInfo = { name: "Muralitharan", age: 30 };
 const PI = 3.14;
 const MAX_VALUE = 100;
@@ -431,7 +431,7 @@ function myFunction() {
    console.log(localVariable); // Accessing local variable
 }
 myFunction();
-// console.log(localVariable); // This would cause an error because localVariable is not accessible outside the function
+// console.log(localVariable); // This would cause an e rror because localVariable is not accessible outside the function
 ```
 
 **5.Variable Reassignment**: You can change the value of a variable after declaring it.
@@ -1147,7 +1147,7 @@ for (let i = 0; i < 5; i++) {
 
 **2. While Loop**: 
 
-Used when you don't know the number of iterations beforehand
+Used when you don't know the number of iterations before hand
 
 ```javascript
 let i = 0;
