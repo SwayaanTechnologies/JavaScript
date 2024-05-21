@@ -468,6 +468,8 @@ JavaScript supports several data types that are used to represent different kind
 
 **1.Primitive Data Types**:
 
+The predefined data types provided by JavaScript language are known as primitive data types. Primitive data types are also known as in-built data types.
+
 *  **Number**: Represents numeric values.
 
     Example: `let num = 42;`
@@ -494,6 +496,8 @@ JavaScript supports several data types that are used to represent different kind
 
 **2.Composite Data Types**:
 
+A data type is known as a composite data type when it represents a number of similar or different data under a single declaration of variable i.e., a data type that has multiple values grouped together. There are mainly three types of composite data types named as below −
+
 * **Object**: Represents a collection of key -value pairs. 
 
     Example:`let person = { name: "John", age: 30 };`
@@ -501,8 +505,6 @@ JavaScript supports several data types that are used to represent different kind
 * **Array**: Represents a collection of elements, indexed by integers. 
 
     Example: `let numbers = [1, 2, 3, 4];`
-
-**3.Special Data Types**:
 
 - **Function**: Functions are a type of object but can be called like a regular function. 
 
