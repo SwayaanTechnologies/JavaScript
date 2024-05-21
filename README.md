@@ -2078,6 +2078,7 @@ console.log(navigator.mediaDevices); // Output the MediaDevices object
 ```javascript
 navigator.vibrate(200); // Vibrate for 200 milliseconds
 navigator.share({ title: 'Share Example', text: 'Check out this content!', url: 'https://example.com' });
+
 ```
 
 The `navigator` object is useful for obtaining information about the user's environment and browser capabilities, enabling developers to create more personalized and feature-rich web applications.
