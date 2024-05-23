@@ -5206,7 +5206,7 @@ This is an object called `Object.prototype`, and it is the most basic prototype,
 
 ![Gif](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*hV2JxSvnzyXs6IBrmShYBw.gif)
 
-![images](./Images/myobject-prototype-chain.svg)
+![images](Images/myobject-prototype-chain.svg)
 
 **The prototype of an object is not always `Object.prototype`. Try this:**
 
@@ -5226,7 +5226,7 @@ do {
 
 This code creates a `Date` object, then walks up the prototype chain, logging the prototypes. It shows us that the prototype of `myDate` is a `Date.prototype` object, and the prototype of that is `Object.prototype`.
 
-![images](./Images/mydate-prototype-chain.svg)
+![images](Images/mydate-prototype-chain.svg)
 
 In fact, when you call familiar methods, like `myDate2.getMonth()`, you are calling a method that's defined on `Date.prototype`.
 
@@ -5602,7 +5602,7 @@ Similarly, in a computer program, asynchronous programming allows a program to w
 
 For example, a program can send a request to a server while handling user input and processing data, all at the same time. This way, the program can run more efficiently.
 
-![images](./Images/image-321.png)
+![images](Images/image-321.png)
 
 In this article, we will delve into the world of asynchronous programming in JavaScript, exploring the different techniques and concepts that are used to achieve this powerful programming paradigm.
 
@@ -5644,7 +5644,7 @@ thirdTask(); //output : Task 3
 
 The code will execute the tasks in the order you see them and wait for each task to be completed before moving on to the next one.
 
-![images](./Images/image-244.png)
+![images](Images/image-244.png)
 
 However, synchronous programming can be problematic in certain situations, particularly when dealing with tasks that take a significant amount of time to complete.
 
@@ -5684,7 +5684,7 @@ However, if the program is executed asynchronously, it will continue to run the 
 
 Asynchronous programming is a way for a computer program to handle multiple tasks simultaneously rather than executing them one after the other.
 
-![images](./Images/image-336.png)
+![images](Images/image-336.png)
 
 Asynchronous programming allows a program to continue working on other tasks while waiting for external events, such as network requests, to occur. This approach can greatly improve the performance and responsiveness of a program.
 
@@ -5885,7 +5885,7 @@ There are 7 types of JavaScript errors:
 - URI Error 
 - Internal Error
 
-![image](./Images/types-of-errors-in-javascript-thumbnail.webp)
+![image](Images/types-of-errors-in-javascript-thumbnail.webp)
 
 ### Syntax error
 
@@ -6142,7 +6142,7 @@ catch (err) {
 
 Output 
 
-![images](./Images/Screenshot20220810162437-660x139.png)
+![images](Images/Screenshot20220810162437-660x139.png)
 
 Function constructor inheriting error class:
 Here the function inherits the prototype of the error class. we can then create other custom properties and methods to handle the application-specific error.
@@ -6179,7 +6179,7 @@ catch (err) {
 
 Output
 
-![images](./Images/Screenshot20220810163849.png)
+![images](Images/Screenshot20220810163849.png)
 
 ## More Common Errors in JavaScript
 
