@@ -156,17 +156,9 @@
  
     - [Functions with return](#functions-with-return)
 
-- [Loops](#loops)
-
-    - [While](#while)
-
-    - [Do While](#do-while)
-
-    - [For](#for)
-
-    - [Nested](#nested)
-
 - [Arrays](#arrays)
+
+- [Nested](#nested)
 
 - [String and its Methods](#string-and-its-methods)
 
