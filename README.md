@@ -4582,6 +4582,7 @@ function add(a, b) {
 
 let sum = add(5, 3);
 console.log("Sum:", sum); // Output: "Sum: 8"
+
 ```
 
 In this example, the `add` function takes two parameters, `a` and `b`. When you call `add(5, 3)`, `5` is passed as `a`, `3` is passed as `b`, and the function returns their sum, which is assigned to the variable `sum`.
@@ -4982,11 +4983,17 @@ In addition to block scopes, variables can be scoped to the global and module sc
 
 In a web browser, the global scope is at the top level of a script. It is the root of the scope tree that we described earlier, and it contains all other scopes. Thus, creating a variable in the global scope makes it accessible in every scope:
 
+module.js
+
 ```javascript
-<script>
+
 	const foo = "foo";
-</script>
-<script>
+
+```
+main.js
+
+```js
+
 	console.log(foo); // "foo"
 		
 	function bar() {
@@ -4996,7 +5003,7 @@ In a web browser, the global scope is at the top level of a script. It is the ro
 	}
 
 	bar(); // "foo"
-</script>
+
 ```
 
 __Each module also has its own scope. Variables declared at the module level are only available within that module – they are not global:__
